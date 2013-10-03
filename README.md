@@ -23,9 +23,9 @@ perlbrew use perl-5.18.1 and exit or perlbrew off
 
  2. Get [Nginx]
 ```shell
-./configure --with-http_perl_module --with-http_ssl_module --prefix=/data/Perl/nginx
+./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx
 make install
-/data/Perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
+/opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
 
 Dependencies
@@ -44,6 +44,7 @@ cpanm -v DBD::SQLite
 cpanm -v DBD::mysql
 cpanm -v Net::Async:CassandraCQL
 cpanm -v Test::Nginx::Socket
+cpanm -v ExtUtils::Embed
 ```
 
 Copyright and License

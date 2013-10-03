@@ -35,7 +35,7 @@ sub post {
   my $json_text;
 
   eval {
-    my $redis = Redis->new( sock => '/tmp/redis.sock' );
+    my $redis = Redis->new();
     my $key = $r->uri;
     $redis->set('last_uri' => $key);
     $json_text = $json->encode( { $key => \%params } );
