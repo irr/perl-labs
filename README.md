@@ -32,8 +32,8 @@ Dependencies
 -----------
 
 ```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel
-sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev
 ```
 
 ```shell
@@ -45,6 +45,9 @@ cpanm -v DBD::mysql
 cpanm -v Net::Async:CassandraCQL
 cpanm -v Test::Nginx::Socket
 cpanm -v ExtUtils::Embed
+cpanm -v POE
+cpanm -v Net::Pcap
+cpanm -v NetPacket::Ethernet
 ```
 
 Copyright and License
