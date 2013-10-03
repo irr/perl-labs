@@ -8,10 +8,7 @@ perl-labs
  1. Get [Perlbrew]
 ```shell
 cd
-mkdir -p /data/Perl
 curl -kL http://install.perlbrew.pl | bash
-mv perl5 /data/Perl/
-ln -s /data/Perl/perl5
 perlbrew init
 perlbrew mirror
 perlbrew available
