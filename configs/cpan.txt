@@ -1,0 +1,5 @@
+Uninstall modules:
+yum install perl-CPANPLUS
+for module in $(perldoc -u perllocal | grep -F 'C<Module> L<' | sed 's/^.*L<\(.*\)|.*>$/\1/') ; do echo $module; done
+
+perl -MConfig -le ' system qw{ rm -rfv }, $Config::Config{sitelib} '
