@@ -39,7 +39,7 @@ cpanm -v JSON
 cpanm -v Dancer
 cpanm -v DBD::SQLite
 cpanm -v DBD::mysql
-cpanm -v Net::Async:CassandraCQL
+cpanm -v Net::Async::CassandraCQL
 cpanm -v Test::Nginx::Socket
 cpanm -v ExtUtils::Embed
 cpanm -v POE
