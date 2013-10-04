@@ -1,4 +1,4 @@
-#!/home/irocha/perl/utils/perlbrew.sh
+#!/usr/local/bin/perlbrew.sh
 
 use strict;
 use warnings;
