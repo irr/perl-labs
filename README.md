@@ -45,6 +45,7 @@ cpanm -v ExtUtils::Embed
 cpanm -v POE
 cpanm -v Net::Pcap
 cpanm -v NetPacket::Ethernet
+cpanm -v Encode::Detect::Detector
 ```
 
 Copyright and License
