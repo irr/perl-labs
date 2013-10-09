@@ -41,7 +41,6 @@ cpanm -v DBD::SQLite
 cpanm -v DBD::mysql
 cpanm -v Net::Async::CassandraCQL
 cpanm -v Test::Nginx::Socket
-cpanm -v ExtUtils::Embed
 cpanm -v POE
 cpanm -v Net::Pcap
 cpanm -v NetPacket::Ethernet
