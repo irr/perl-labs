@@ -29,8 +29,8 @@ Dependencies
 -----------
 
 ```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel
-sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev
 ```
 
 ```shell
