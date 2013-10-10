@@ -11,9 +11,9 @@ $sth->execute($user);
 while (my $ref = $sth->fetchrow_hashref()) {
   print "found a row: $ref->{'Host'}\n";
 }
-$sth->finish();
 my $rows = $sth->rows;
 print("total rows: $rows\n");
+$sth->finish();
 undef $sth;
 $dbh->disconnect();
 undef $dbh;
