@@ -34,17 +34,17 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
-cpanm -v Redis
-cpanm -v JSON
-cpanm -v Dancer
-cpanm -v DBD::SQLite
-cpanm -v DBD::mysql
-cpanm -v Net::Async::CassandraCQL
-cpanm -v Test::Nginx::Socket
-cpanm -v POE
-cpanm -v Net::Pcap
-cpanm -v NetPacket::Ethernet
-cpanm -v Encode::Detect::Detector
+cpanm -v -n Redis
+cpanm -v -n JSON
+cpanm -v -n Dancer
+cpanm -v -n DBD::SQLite
+cpanm -v -n DBD::mysql
+cpanm -v -n Net::Async::CassandraCQL
+cpanm -v -n Test::Nginx::Socket
+cpanm -v -n POE
+cpanm -v -n Net::Pcap
+cpanm -v -n NetPacket::Ethernet
+cpanm -v -n Encode::Detect::Detector
 ```
 
 Copyright and License
