@@ -12,7 +12,6 @@ if ($#ARGV < 0) {
 }
 
 open(my $fh_in, $ARGV[0]) or die $!;
-binmode($fh_in);
 my @sub = <$fh_in>;
 close($fh_in);
 
