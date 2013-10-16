@@ -6,6 +6,11 @@ use warnings;
 use Encode qw(encode);
 use Encode::Detect::Detector;
 
+if ($#ARGV < 0) {
+    print "usage: srt.pl <file>\n";
+    exit 1;
+}
+
 open(my $fh_in, $ARGV[0]) or die $!;
 binmode($fh_in);
 my @sub = <$fh_in>;
