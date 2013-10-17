@@ -20,7 +20,7 @@ perlbrew use perl-5.18.1 and exit or perlbrew off
 
  2. Get [Nginx]
 ```shell
-./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx
+./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module-0.4.4 --add-module=/opt/perl/headers-more-nginx-module-0.22
 make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
@@ -47,6 +47,9 @@ cpanm -v -n NetPacket::Ethernet
 cpanm -v -n Encode::Detect::Detector
 ```
 
+* [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
+* [headers-more-nginx-module]: set, add, and clear arbitrary output headers
+
 Copyright and License
 -----------
 Copyright 2012 Ivan Ribeiro Rocha
@@ -65,4 +68,5 @@ limitations under the License.
 
 [Nginx]: http://wiki.nginx.org/
 [Perlbrew]: http://perlbrew.pl/
-  
+[nginx_tcp_proxy_module]: https://github.com/irr/nginx_tcp_proxy_module
+[headers-more-nginx-module]: https://github.com/irr/headers-more-nginx-module
