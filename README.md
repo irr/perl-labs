@@ -53,6 +53,13 @@ cpanm -v -n Encode::Detect::Detector
 cpanm -v -n ExtUtils::Embed
 ```
 
+```shell
+cpanm -v --configure-args="--with-http_ssl_module" Nginx
+cpanm -v Nginx::Test
+cpanm -v Nginx::Redis
+cpanm -v Nginx::HTTP
+```
+
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
 * [headers-more-nginx-module]: set, add, and clear arbitrary output headers
 
