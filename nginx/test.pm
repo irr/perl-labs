@@ -31,7 +31,8 @@ sub post {
     my($k, $v) = split "=", $_;
     $params{$r->unescape($k)} = $r->unescape($v);
   }
-
+  $params{"perl"} = $];
+  
   my $json_text;
 
   eval {
