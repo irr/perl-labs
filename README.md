@@ -41,7 +41,6 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```shell
 cpanm -v -n Redis
 cpanm -v -n JSON
-cpanm -v -n Dancer
 cpanm -v -n DBD::SQLite
 cpanm -v -n DBD::mysql
 cpanm -v -n Net::Async::CassandraCQL
@@ -51,6 +50,12 @@ cpanm -v -n Net::Pcap
 cpanm -v -n NetPacket::Ethernet
 cpanm -v -n Encode::Detect::Detector
 cpanm -v -n ExtUtils::Embed
+```
+
+```shell
+cpanm -v -n Dancer
+cpanm -v -n Dancer::Plugin::Database
+cpanm -v -n Dancer::Plugin::Redis
 ```
 
 ```shell
