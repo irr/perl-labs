@@ -59,10 +59,10 @@ cpanm -v -n Dancer::Plugin::Redis
 ```
 
 ```shell
-cpanm -v --configure-args="--with-http_ssl_module" Nginx
-cpanm -v Nginx::Test
-cpanm -v Nginx::Redis
-cpanm -v Nginx::HTTP
+cpanm -v -n --configure-args="--with-http_ssl_module" Nginx
+cpanm -v -n Nginx::Test
+cpanm -v -n Nginx::Redis
+cpanm -v -n Nginx::HTTP
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
