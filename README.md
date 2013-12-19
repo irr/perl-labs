@@ -24,7 +24,7 @@ perlbrew use perl-5.18.1 and exit or perlbrew off
 cd nginx-1.4.3
 wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.3.patch
 patch -p1 < tcp-1.4.3.patch
-./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module-0.4.4 --add-module=/opt/perl/headers-more-nginx-module-0.23
+./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module-0.4.4 --add-module=/opt/perl/headers-more-nginx-module-0.24
 make -j4
 make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
@@ -75,4 +75,4 @@ limitations under the License.
 [Nginx]: http://wiki.nginx.org/
 [Perlbrew]: http://perlbrew.pl/
 [nginx_tcp_proxy_module]: https://github.com/irr/nginx_tcp_proxy_module
-[headers-more-nginx-module]: https://github.com/irr/headers-more-nginx-module
+[headers-more-nginx-module]: https://github.com/agentzh/headers-more-nginx-module
