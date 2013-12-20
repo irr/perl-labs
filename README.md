@@ -43,7 +43,6 @@ cpanm -v -n Redis
 cpanm -v -n JSON
 cpanm -v -n DBD::SQLite
 cpanm -v -n DBD::mysql
-cpanm -v -n Net::Async::CassandraCQL
 cpanm -v -n Test::Nginx::Socket
 cpanm -v -n POE
 cpanm -v -n Net::Pcap
