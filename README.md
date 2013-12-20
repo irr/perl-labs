@@ -13,7 +13,7 @@ perlbrew init
 perlbrew mirror
 perlbrew available
 # Fetching perl-5.18.1 as /home/irocha/perl5/perlbrew/dists/perl-5.18.1.tar.gz
-perlbrew install perl-5.18.1 -Dusethreads
+perlbrew install perl-5.18.1 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
 perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.18.1 and perlbrew switch-off
 perlbrew use perl-5.18.1 and exit or perlbrew off
