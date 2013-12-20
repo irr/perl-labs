@@ -40,6 +40,7 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 
 ```shell
 cpanm -v -n Eval::Closure
+cpanm -v -n String::Util
 ```
 
 ```shell
