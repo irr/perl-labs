@@ -3,23 +3,30 @@
 use strict;
 use warnings;
 
-use Encode qw(encode);
-use Encode::Detect::Detector;
+sub trim { 
+    my $s = shift; 
+    $s =~ s/^\s+|\s+$//g; 
+    return $s 
+};
 
 if ($#ARGV < 0) {
     print "usage: srt.pl <file>\n";
     exit 1;
 }
 
-open(my $fh_in, $ARGV[0]) or die $!;
-my @sub = <$fh_in>;
-close($fh_in);
+my $file = trim `file -bi $ARGV[0]`;
 
-my $encoding = Encode::Detect::Detector::detect("@sub");
+my @encoding = split "charset=", $file;
 
-open(my $fh_out, ">$ARGV[0]") or die $!;
-foreach my $line (@sub) {
-    $line =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
-    print $fh_out (($encoding ne "UTF-8") && encode("UTF-8", $line) || $line);    
+exit(1) if @encoding == 1;
+exit(0) if $encoding[1] eq "utf-8";
+
+my @res = `iconv -f $encoding[1] -t UTF-8//TRANSLIT $ARGV[0]`;
+
+if ($? == 0) {
+    open(my $fh_out, ">$ARGV[0]") or die $!;
+    my $srt = join '', @res;
+    $srt =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
+    print $fh_out $srt;
+    close $fh_out;
 }
-close($fh_out);
