@@ -65,9 +65,8 @@ cpanm -v -n Nginx::HTTP
 ```
 
 ```shell
- cpanm -v -n Term::ReadKey
- cpanm -v -n Term::ReadLine
- ```
+ cpanm -v -n PerlConsole
+```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
 * [headers-more-nginx-module]: set, add, and clear arbitrary output headers
