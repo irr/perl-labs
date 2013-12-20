@@ -39,6 +39,10 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
+cpanm -v -n Eval::Closure
+```
+
+```shell
 cpanm -v -n Redis
 cpanm -v -n JSON
 cpanm -v -n DBD::SQLite
