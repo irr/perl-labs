@@ -17,11 +17,9 @@ close($fh_in);
 
 my $encoding = Encode::Detect::Detector::detect("@sub");
 
-print $encoding
-
-#open(my $fh_out, ">$ARGV[0]") or die $!;
-#foreach my $line (@sub) {
-#    $line =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
-#    print $fh_out (($encoding ne "UTF-8") && encode("UTF-8", $line) || $line);    
-#}
-#close($fh_out);
+open(my $fh_out, ">$ARGV[0]") or die $!;
+foreach my $line (@sub) {
+    $line =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
+    print $fh_out (($encoding ne "UTF-8") && encode("UTF-8", $line) || $line);    
+}
+close($fh_out);
