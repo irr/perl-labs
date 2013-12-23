@@ -1,6 +1,11 @@
 #!/usr/bin/env perl
 use Dancer;
 
+# http://www.nntp.perl.org/group/perl.par/2013/12/msg5672.html
+# pp -a "/path/to/your/MIME/types.db;lib/MIME/types.db" \
+#    -F PatchContent=MIME/Types.pm \
+#    -M PerlIO::encoding 
+
 # development
 #set environment => 'development';
 #set log => 'core';

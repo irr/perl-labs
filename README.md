@@ -39,6 +39,12 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
+cpanm --self-upgrade
+cpanm -v -n cpan-outdated
+cpan-outdated -p | cpanm
+```
+
+```shell
 cpanm -v -n Eval::Closure
 cpanm -v -n List::MoreUtils
 cpanm -v -n Proc::ProcessTable
