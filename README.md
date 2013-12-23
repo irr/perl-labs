@@ -40,8 +40,8 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 
 ```shell
 cpanm -v -n Eval::Closure
-cpnam -v -n List::MoreUtils
-cpnam -v -n Proc::ProcessTable
+cpanm -v -n List::MoreUtils
+cpanm -v -n Proc::ProcessTable
 cpanm -v -n String::Util
 cpanm -v -n YAML
 ```
