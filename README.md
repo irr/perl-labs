@@ -39,12 +39,8 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
-cpanm --self-upgrade
-cpanm -v -n cpan-outdated
-cpan-outdated -p | cpanm
-```
-
-```shell
+cpanm -v -n PAR::Packer
+cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Eval::Closure
 cpanm -v -n List::MoreUtils
 cpanm -v -n Proc::ProcessTable
@@ -57,12 +53,6 @@ cpanm -v -n Redis
 cpanm -v -n JSON
 cpanm -v -n DBD::SQLite
 cpanm -v -n DBD::mysql
-cpanm -v -n Test::Nginx::Socket
-cpanm -v -n POE
-cpanm -v -n Net::Pcap
-cpanm -v -n NetPacket::Ethernet
-cpanm -v -n Encode::Detect::Detector
-cpanm -v -n ExtUtils::Embed
 ```
 
 ```shell
@@ -76,12 +66,6 @@ cpanm -v -n --configure-args="--with-http_ssl_module" Nginx
 cpanm -v -n Nginx::Test
 cpanm -v -n Nginx::Redis
 cpanm -v -n Nginx::HTTP
-```
-
-```shell
-cpanm -v -n PAR::Packer
-cpanm -v -n PerlConsole
-cpanm -v -n Term::ReadLine::Gnu
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
