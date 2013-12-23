@@ -73,8 +73,9 @@ cpanm -v -n Nginx::HTTP
 ```
 
 ```shell
- cpanm -v -n PerlConsole
- cpanm -v -n Term::ReadLine::Gnu
+cpanm -v -n PAR::Packer
+cpanm -v -n PerlConsole
+cpanm -v -n Term::ReadLine::Gnu
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
