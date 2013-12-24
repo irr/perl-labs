@@ -14,7 +14,7 @@ sub trim {
 sub readfile {
     my ($enc, $fname) = @_;
     if ($enc ne "utf-8") {
-        return qx|iconv -f $enc -t UTF-8//TRANSLIT $fname|;
+        return qx|iconv -f $enc -t UTF-8//TRANSLIT "$fname"|;
     }
     open(my $fh_in, $fname);
     my @subs = <$fh_in>;
@@ -27,7 +27,7 @@ if ($#ARGV < 0) {
     exit 1;
 }
 
-my $file = &trim(qx|file -bi $ARGV[0]|);
+my $file = &trim(qx|file -bi "$ARGV[0]"|);
 
 my @encoding = split("charset=", $file);
 exit(1) if @encoding == 1;
