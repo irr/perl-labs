@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use 5.014;
+
 sub trim { 
     my $s = shift; 
     $s =~ s/^\s+|\s+$//g; 
