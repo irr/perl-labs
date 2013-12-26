@@ -69,6 +69,13 @@ cpanm -v -n Nginx::Redis
 cpanm -v -n Nginx::HTTP
 ```
 
+```shell
+cpanm -v -n Digest::MD5
+cpanm -v -n Crypt::Random
+cpanm -v -n Crypt::CBC
+cpanm -v -n Crypt::Cipher::AES
+```
+
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
 * [headers-more-nginx-module]: set, add, and clear arbitrary output headers
 
