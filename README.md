@@ -46,6 +46,7 @@ cpanm -v -n List::MoreUtils
 cpanm -v -n Proc::ProcessTable
 cpanm -v -n String::Util
 cpanm -v -n YAML
+cpanm -v -n WWW::Mechanize
 ```
 
 ```shell
