@@ -39,6 +39,7 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
+cpanm -v -n DateTime
 cpanm -v -n DateTime::Tiny
 cpanm -v -n Eval::Closure
 cpanm -v -n List::MoreUtils
