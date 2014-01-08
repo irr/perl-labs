@@ -39,21 +39,22 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
-cpanm -v -n PAR::Packer
-cpanm -v -n Term::ReadLine::Gnu
+cpanm -v -n DateTime::Tiny
 cpanm -v -n Eval::Closure
 cpanm -v -n List::MoreUtils
+cpanm -v -n PAR::Packer
 cpanm -v -n Proc::ProcessTable
 cpanm -v -n String::Util
+cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n YAML
 cpanm -v -n WWW::Mechanize
 ```
 
 ```shell
-cpanm -v -n Redis
-cpanm -v -n JSON
 cpanm -v -n DBD::SQLite
 cpanm -v -n DBD::mysql
+cpanm -v -n JSON
+cpanm -v -n Redis
 ```
 
 ```shell
@@ -64,16 +65,16 @@ cpanm -v -n Dancer::Plugin::Redis
 
 ```shell
 cpanm -v -n --configure-args="--with-http_ssl_module" Nginx
-cpanm -v -n Nginx::Test
-cpanm -v -n Nginx::Redis
 cpanm -v -n Nginx::HTTP
+cpanm -v -n Nginx::Redis
+cpanm -v -n Nginx::Test
 ```
 
 ```shell
-cpanm -v -n Digest::MD5
-cpanm -v -n Crypt::Random
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Cipher::AES
+cpanm -v -n Crypt::Random
+cpanm -v -n Digest::MD5
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
