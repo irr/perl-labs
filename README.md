@@ -10,11 +10,9 @@ perl-labs
 yum install perl-CPAN
 cpan App::cpanminus
 cpanm install App::perlbrew
-```
-
-```shell
-cd
+# or
 curl -kL http://install.perlbrew.pl | bash
+# init
 perlbrew init
 perlbrew mirror
 perlbrew available
