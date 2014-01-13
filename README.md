@@ -7,6 +7,12 @@ perl-labs
 
  1. Get [Perlbrew]
 ```shell
+yum install perl-CPAN
+cpan App::cpanminus
+cpanm install App::perlbrew
+```
+
+```shell
 cd
 curl -kL http://install.perlbrew.pl | bash
 perlbrew init
