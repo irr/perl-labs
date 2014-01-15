@@ -49,6 +49,7 @@ cpanm -v -n DateTime::Tiny
 cpanm -v -n Eval::Closure
 cpanm -v -n IPC::System::Simple
 cpanm -v -n List::MoreUtils
+cpanm -v -n List::Util
 cpanm -v -n PAR::Packer
 cpanm -v -n Proc::ProcessTable
 cpanm -v -n String::Util
