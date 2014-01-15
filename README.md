@@ -44,8 +44,10 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 
 ```shell
 cpanm -v -n DateTime
+cpanm -v -n DateTime::Moonpig
 cpanm -v -n DateTime::Tiny
 cpanm -v -n Eval::Closure
+cpanm -v -n IPC::System::Simple
 cpanm -v -n List::MoreUtils
 cpanm -v -n PAR::Packer
 cpanm -v -n Proc::ProcessTable
@@ -66,6 +68,7 @@ cpanm -v -n Redis
 cpanm -v -n Dancer
 cpanm -v -n Dancer::Plugin::Database
 cpanm -v -n Dancer::Plugin::Redis
+cpanm -v -n Plack
 ```
 
 ```shell
