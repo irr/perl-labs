@@ -51,11 +51,13 @@ cpanm -v -n IPC::System::Simple
 cpanm -v -n List::MoreUtils
 cpanm -v -n List::Util
 cpanm -v -n PAR::Packer
+cpanm -v -n PerlConsole
 cpanm -v -n Proc::ProcessTable
+cpanm -v -n Storable
 cpanm -v -n String::Util
 cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Try::Tiny
-cpanm -v -n YAML
+cpanm -v -n YAML::Tiny
 cpanm -v -n WWW::Mechanize
 ```
 
