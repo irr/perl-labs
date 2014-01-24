@@ -1,9 +1,8 @@
 #!/usr/local/bin/perlbrew.sh
 
+use 5.014;
 use strict;
 use warnings;
-
-use 5.014;
 
 sub trim { 
     my $s = shift; 
