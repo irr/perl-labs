@@ -43,6 +43,7 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
+cpanm -v -n Data::MessagePack
 cpanm -v -n DateTime
 cpanm -v -n DateTime::Moonpig
 cpanm -v -n DateTime::Tiny

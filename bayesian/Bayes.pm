@@ -5,6 +5,8 @@ use 5.014;
 use warnings;
 use strict;
 
+use Data::MessagePack;
+
 sub new {
     my $class = shift;
     my $self = { };
@@ -14,6 +16,15 @@ sub new {
     foreach (@{$self->{classes}}) {
         $self->{sets}->{$_} = { freqs => {}, total => 0 };
     }
+    return $self;
+}
+
+sub fromfile {
+    my $class = shift;
+    my $self = { };
+    bless $self, $class;
+    die "missing required file" unless $_[0]{file};
+    $self->unfreeze($_[0]{file});
     return $self;
 }
 
@@ -60,6 +71,28 @@ sub query {
     }
 
     return $scores;
+}
+
+sub freeze {
+    my ($self, $file) = @_;
+    my $mp = Data::MessagePack->new();
+    my $data = $mp->pack([$self->{classes}, $self->{sets}]); 
+    open(my $out, '>:raw', $file) or die "Unable to open: $!";
+    print $out $data;
+    close($out);
+}
+
+sub unfreeze {
+    my ($self, $file) = @_;
+    my $size = -s $file;
+    my $bin;
+    open(my $in, '<:raw', $file) or die "Unable to open: $!";
+    read($in, $bin, $size);
+    close($in);
+    my $mp = Data::MessagePack->new();
+    my $data = $mp->unpack($bin);
+    $self->{classes} = @{$data}[0];
+    $self->{sets} = @{$data}[1];
 }
 
 1;

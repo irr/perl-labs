@@ -15,8 +15,8 @@ sub load {
 }
 
 sub test {
-    my $words = shift;
-    say "\nTesting ( @{$words} )...";
+    my ($obj, $words) = @_;
+    say "\nTesting $obj ( @{$words} )...";
     say Dump($b->query($words));
 }
 
@@ -27,6 +27,16 @@ foreach ("Doyle", "Dowson", "Beowulf") {
     $b->learn($_, \@w);    
 }
 
-test(["adventures", "sherlock", "holmes"]);
-test(["comedy", "masks"]);
-test(["hrothgar", "beowulf"]);
+$b->freeze("f.bin");
+
+test($b, ["adventures", "sherlock", "holmes"]);
+test($b, ["comedy", "masks"]);
+test($b, ["hrothgar", "beowulf"]);
+
+$b = Bayes->fromfile({"file" => "f.bin"});
+
+test($b, ["adventures", "sherlock", "holmes"]);
+test($b, ["comedy", "masks"]);
+test($b, ["hrothgar", "beowulf"]);
+
+unlink("f.bin");
