@@ -43,6 +43,11 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
+cpanm -v -n Pod::POM::Web
+# perl -MPod::POM::Web -e "Pod::POM::Web->server"
+```
+
+```shell
 cpanm -v -n Data::MessagePack
 cpanm -v -n DateTime
 cpanm -v -n DateTime::Moonpig
