@@ -57,8 +57,8 @@ sub query {
     foreach (@{$self->{classes}}) {
         my $data = $self->{sets}->{$_};
         my $score = $priors->{$_};
-        foreach my $w (@{$words}) {
-            my $freq = $data->{freqs}->{$w};
+        foreach (@{$words}) {
+            my $freq = $data->{freqs}->{$_};
             $score = $score * (($freq) ? 
                 ($freq / $data->{total}) : 0.00000000001);
         }
