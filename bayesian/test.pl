@@ -6,6 +6,7 @@ use warnings;
 use strict;
 
 use Bayes;
+use YAML;
 
 sub load {
     my $file = shift;
