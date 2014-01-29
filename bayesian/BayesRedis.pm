@@ -19,16 +19,16 @@ sub fr {
 }
 
 sub new {
-    my $class = shift;
-    my $self = { };
-    bless $self, $class;
-    die "missing required namespace" unless $_[0]{namespace};
-    die "missing required classes" unless $_[0]{classes};
-    die "missing required host" unless $_[0]{host};
-    die "missing required port" unless $_[0]{port};
-    $self->{classes} = $_[0]{classes};
-    $self->{namespace} = $_[0]{namespace};
-    $self->{redis} = Redis->new(server => "$_[0]{host}:$_[0]{port}");
+    my ($class, %args) = @_;
+    my $self = bless {}, $class;
+    die "missing required namespace" unless $args{namespace};
+    die "missing required classes" unless $args{classes};
+    die "missing required host" unless $args{host};
+    die "missing required port" unless $args{port};
+    $self->{classes} = $args{classes};
+    $self->{namespace} = $args{namespace};
+    $self->{redis} = Redis->new(server => "$args{host}:$args{port}",
+                                reconnect => $args{reconnect});
     try {
         foreach (@{$self->{classes}}) {
             $self->{redis}->sadd($self->{namespace} => $_);

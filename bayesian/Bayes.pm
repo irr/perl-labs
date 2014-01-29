@@ -8,11 +8,10 @@ use strict;
 use Data::MessagePack;
 
 sub new {
-    my $class = shift;
-    my $self = { };
-    bless $self, $class;
-    die "missing required classes" unless $_[0]{classes};
-    $self->{classes} = $_[0]{classes};
+    my ($class, %args) = @_;
+    my $self = bless {}, $class;
+    die "missing required classes" unless $args{classes};
+    $self->{classes} = $args{classes};
     foreach (@{$self->{classes}}) {
         $self->{sets}->{$_} = { freqs => {}, total => 0 };
     }
@@ -20,11 +19,10 @@ sub new {
 }
 
 sub fromfile {
-    my $class = shift;
-    my $self = { };
-    bless $self, $class;
-    die "missing required file" unless $_[0]{file};
-    $self->unfreeze($_[0]{file});
+    my ($class, %args) = @_;
+    my $self = bless {}, $class;
+    die "missing required file" unless $args{file};
+    $self->unfreeze($args{file});
     return $self;
 }
 

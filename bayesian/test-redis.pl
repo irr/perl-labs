@@ -4,6 +4,7 @@ use 5.014;
 
 use warnings;
 use strict;
+use diagnostics;
 
 use BayesRedis;
 use YAML;
@@ -20,10 +21,11 @@ sub test {
     say Dump($b->query($words));
 }
 
-$b = BayesRedis->new({"namespace" => "bayes",
-                      "classes" => ["good", "bad", "neutral"],
-                      "host" => "127.0.0.1", 
-                      "port" => 6379 });
+$b = BayesRedis->new(namespace => "bayes",
+                     classes => ["good", "bad", "neutral"],
+                     host => "127.0.0.1", 
+                     port => 6379,
+                     reconnect => 60);
 
 $b->learn("good", ["tall", "handsome", "rich"]);
 $b->learn("bad", ["bald", "poor", "ugly", "bitch"]);

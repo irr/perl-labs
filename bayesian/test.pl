@@ -20,7 +20,7 @@ sub test {
     say Dump($b->query($words));
 }
 
-$b = Bayes->new({"classes" => ["Doyle", "Dowson", "Beowulf"]});
+$b = Bayes->new(classes => ["Doyle", "Dowson", "Beowulf"]);
 
 foreach ("Doyle", "Dowson", "Beowulf") {
     my @w = map { lc($_) } load("$_.txt");
@@ -33,7 +33,7 @@ test($b, ["adventures", "sherlock", "holmes"]);
 test($b, ["comedy", "masks"]);
 test($b, ["hrothgar", "beowulf"]);
 
-$b = Bayes->fromfile({"file" => "f.bin"});
+$b = Bayes->fromfile(file => "f.bin");
 
 test($b, ["adventures", "sherlock", "holmes"]);
 test($b, ["comedy", "masks"]);
