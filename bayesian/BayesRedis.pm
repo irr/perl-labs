@@ -8,14 +8,14 @@ use strict;
 use Redis;
 use Try::Tiny;
 
-sub k {
-    my ($ns, $cls, $s) = @_;
-    return "$ns:$cls:_$s";
-}
-
 sub fr {
     my ($k, $w) = @_;
     return "$k:$w";
+}
+
+sub k {
+    my ($self, $cls, $s) = @_;
+    return "$self->{namespace}:$cls:_$s";
 }
 
 sub new {
@@ -32,7 +32,7 @@ sub new {
                                     reconnect => $args{reconnect});
         foreach (@{$self->{classes}}) {
             $self->{redis}->sadd($self->{namespace} => $_);
-            $self->{redis}->set(k($self->{namespace}, $_, "total") => "0");
+            $self->{redis}->set($self->k($_, "total") => "0");
         }
     } catch {
         die "error initializing redis classes [@{$self->{classes}}] ($_)";
@@ -42,8 +42,8 @@ sub new {
 
 sub learn {
     my ($self, $class, $words) = @_;
-    my $key = k($self->{namespace}, $class, "freqs");
-    my $tot = k($self->{namespace}, $class, "total");
+    my $key = $self->k($class, "freqs");
+    my $tot = $self->k($class, "total");
     try {
         $self->{redis}->multi;
         foreach (@{$words}) {
@@ -65,7 +65,7 @@ sub query {
     
     try {
         foreach (@{$self->{classes}}) {
-            my $total = $self->{redis}->get(k($self->{namespace}, $_, "total"));
+            my $total = $self->{redis}->get($self->k($_, "total"));
             $priors->{$_} = $total;
             $sum += $total;
         }
@@ -77,10 +77,10 @@ sub query {
         $sum = 0;
         foreach (@{$self->{classes}}) {
             my $class = $_;
-            my $total = $self->{redis}->get(k($self->{namespace}, $class, "total"));
+            my $total = $self->{redis}->get($self->k($class, "total"));
             my $score = $priors->{$class};
             foreach (@{$words}) {
-                my $freq = $self->{redis}->get(fr(k($self->{namespace}, $class, "freqs"), $_));
+                my $freq = $self->{redis}->get(fr($self->k($class, "freqs"), $_));
                 $score = $score * ((defined($freq)) ? ($freq / $total) : 0.00000000001);
             }
             $scores->{$class} = $score;
