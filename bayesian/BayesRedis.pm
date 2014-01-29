@@ -98,4 +98,13 @@ sub query {
     };
 }
 
+sub quit {
+    my $self = shift;
+    try {
+        $self->{redis}->quit;
+    } catch {
+        warn "error disconnecting redis ($_)";
+    };
+}
+
 1;

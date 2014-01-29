@@ -32,3 +32,5 @@ $b->learn("bad", ["bald", "poor", "ugly", "bitch"]);
 $b->learn("neutral", ["none", "nothing", "maybe"]);
 
 test($b, ["tall", "poor", "rich", "dummy", "nothing"]);
+
+$b->quit;
