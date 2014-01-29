@@ -4,6 +4,7 @@ use 5.014;
 
 use warnings;
 use strict;
+use diagnostics;
 
 use Bayes;
 use YAML;

@@ -20,11 +20,10 @@ sub fr {
 
 sub new {
     my ($class, %args) = @_;
-    my $self = bless {}, $class;
-    die "missing required namespace" unless $args{namespace};
-    die "missing required classes" unless $args{classes};
-    die "missing required host" unless $args{host};
-    die "missing required port" unless $args{port};
+    my $self = bless {redis => 1}, $class;
+    foreach (qw/namespace classes host port reconnect/) {
+        die "missing required $_" unless $args{$_};
+    }
     $self->{classes} = $args{classes};
     $self->{namespace} = $args{namespace};
     $self->{redis} = Redis->new(server => "$args{host}:$args{port}",
