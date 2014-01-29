@@ -20,22 +20,23 @@ sub fr {
 
 sub new {
     my ($class, %args) = @_;
-    my $self = bless {redis => 1}, $class;
+    my $self = bless {}, $class;
     foreach (qw/namespace classes host port reconnect/) {
         die "missing required $_" unless $args{$_};
     }
     $self->{classes} = $args{classes};
     $self->{namespace} = $args{namespace};
-    $self->{redis} = Redis->new(server => "$args{host}:$args{port}",
-                                reconnect => $args{reconnect});
+
     try {
+        $self->{redis} = Redis->new(server => "$args{host}:$args{port}",
+                                    reconnect => $args{reconnect});
         foreach (@{$self->{classes}}) {
             $self->{redis}->sadd($self->{namespace} => $_);
             $self->{redis}->set(k($self->{namespace}, $_, "total") => "0");
         }
     } catch {
-        die "error initializing redis classes [$self->{classes}] ($_)";
-    }
+        die "error initializing redis classes [@{$self->{classes}}] ($_)";
+    };
     return $self;
 }
 
@@ -54,7 +55,7 @@ sub learn {
         $self->{redis}->exec;
     } catch {
         die "error learning redis class [$class] ($_)";
-    }
+    };
 }
 
 sub query {
@@ -94,7 +95,7 @@ sub query {
     } catch {
         warn "error querying ($_)";
         return undef;
-    }
+    };
 }
 
 1;
