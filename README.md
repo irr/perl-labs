@@ -56,6 +56,7 @@ cpanm -v -n Eval::Closure
 cpanm -v -n IPC::System::Simple
 cpanm -v -n List::MoreUtils
 cpanm -v -n List::Util
+cpanm -v -n MCE
 cpanm -v -n Net::STOMP::Client
 cpanm -v -n PAR::Packer
 cpanm -v -n PerlConsole
