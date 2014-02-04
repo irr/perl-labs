@@ -15,7 +15,7 @@ sub readfile {
     if ($enc ne "utf-8") {
         return qx|iconv -f $enc -t UTF-8//TRANSLIT "$fname"|;
     }
-    open(my $fh_in, $fname);
+    open(my $fh_in, "<", $fname);
     my @subs = <$fh_in>;
     close $fh_in;
     return @subs;
@@ -34,7 +34,7 @@ exit(1) if @encoding == 1;
 my @res = &readfile($encoding[1], $ARGV[0]);
 exit(1) if $? != 0;
 
-open(my $fh_out, ">$ARGV[0]");
+open(my $fh_out, ">", $ARGV[0]);
 my $srt = join '', @res;
 $srt =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
 print $fh_out $srt;
