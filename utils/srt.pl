@@ -31,11 +31,16 @@ my $file = &trim(qx|file -bi "$ARGV[0]"|);
 my @encoding = split("charset=", $file);
 exit(1) if @encoding == 1;
 
+say "Original encoding: @encoding";
 my @res = &readfile($encoding[1], $ARGV[0]);
 exit(1) if $? != 0;
+
+print "Translating and converting... ";
 
 open(my $fh_out, ">", $ARGV[0]);
 my $srt = join '', @res;
 $srt =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
 print $fh_out $srt;
 close($fh_out);
+
+say "Ok!";
