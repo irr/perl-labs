@@ -24,30 +24,31 @@ GetOptions( "add!" => \$add,
             "user=s" => \$user,
             "pass:s" => \$pass );
 
-my $success;
-my $handle = Authen::Krb5::Admin->init_with_password("root/admin", "sun123") or die Authen::Krb5::Admin::error;
-
 usage() if ($add and $del);
 
-if ($add and $pass) {
-    my $ap = Authen::Krb5::Admin::Principal->new;
-    $ap->principal(Authen::Krb5::parse_name($user));
-    $success = $handle->create_principal($ap, $pass);
-    if ($success) {
-        say "$user created > " . $success;
-        exit 0;
-    } else {
-        exit Authen::Krb5::Admin::error;  
+my $handle = Authen::Krb5::Admin->init_with_password("root/admin", "sun123");
+
+if ($handle) {
+    if ($add and $pass) {
+        my $ap = Authen::Krb5::Admin::Principal->new;
+        $ap->principal(Authen::Krb5::parse_name($user));
+        if ($handle->create_principal($ap, $pass)) {
+            say "$user created.";
+            exit 0;
+        } else {
+            exit Authen::Krb5::Admin::error_code;
+        }
+    } elsif ($del) {
+        my $p = Authen::Krb5::parse_name($user);
+        if ($handle->delete_principal($p)) {
+            say "$user removed.";
+            exit 0;
+        } else {
+            exit Authen::Krb5::Admin::error_code;
+        }
     }
-} elsif ($del) {
-    my $p = Authen::Krb5::parse_name($user);
-    $success = $handle->delete_principal($p);
-    if ($success) {
-        say "$user removed > " . $success;
-        exit 0;
-    } else {
-        exit Authen::Krb5::Admin::error;  
-    }
+} else {
+    exit Authen::Krb5::Admin::error_code;
 }
 
 exit 1;
