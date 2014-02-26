@@ -24,9 +24,9 @@ GetOptions( "add!" => \$add,
             "user=s" => \$user,
             "pass:s" => \$pass );
 
-usage() if ($add and $del);
+usage() unless (($add or $del) and ($user and $pass));
 
-my $handle = Authen::Krb5::Admin->init_with_password("root/admin", "sun123");
+my $handle = Authen::Krb5::Admin->init_with_skey("root/admin", "/root/kerberos/root.keytab");
 
 if ($handle) {
     if ($add and $pass) {
