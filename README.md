@@ -25,9 +25,9 @@ perlbrew use perl-5.14.4 and exit or perlbrew off
 
  2. Get [Nginx]
 ```shell
-cd nginx-1.4.5
-wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.5.patch
-patch -p1 < tcp-1.4.5.patch
+cd nginx-1.4.6
+wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.6.patch
+patch -p1 < tcp-1.4.6.patch
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
 make -j4
 make install
