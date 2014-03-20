@@ -1,4 +1,7 @@
 #!/usr/bin/env perl
+# perl krb.pl --add --user=irr --pass=test123
+# perl krb.pl --del --user=irr
+# sudo kadmin.local -q "listprincs"
 use 5.014;
 
 use strict;
@@ -24,9 +27,9 @@ GetOptions( "add!" => \$add,
             "user=s" => \$user,
             "pass:s" => \$pass );
 
-usage() unless (($add or $del) and ($user and $pass));
+usage() unless (($del and $user) or ($add and $user and $pass));
 
-my $handle = Authen::Krb5::Admin->init_with_skey("root/admin", "/root/kerberos/root.keytab");
+my $handle = Authen::Krb5::Admin->init_with_skey("root/admin", "/etc/root.keytab");
 
 if ($handle) {
     if ($add and $pass) {
