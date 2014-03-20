@@ -59,10 +59,13 @@ sub post {
 
     $r->send_http_header;
 
+    return 400 unless ((length($params{action}) > 0) and (length($params{user}) > 0));
+
     try {
         my $kadm5 = krbauth();
 
         if ($params{action} eq 'add') {
+            return 400 unless (length($params{pass}) > 0);
             my $ap = Authen::Krb5::Admin::Principal->new;
             $ap->principal(Authen::Krb5::parse_name($params{user}));
             if ($kadm5->create_principal($ap, $params{pass})) {
