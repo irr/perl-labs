@@ -16,18 +16,19 @@ use Authen::Krb5::Admin qw(:constants);
 Authen::Krb5::init_context;
 
 sub usage {
-    print "krb [--add|--del] --user=<username> --pass=<password>\n";
+    print "krb [--add|--del|--upd] --user=<username> --pass=<password>\n";
     exit 1;
 }
 
-my ($add, $del, $user, $pass) = ('') x 4;
+my ($add, $del, $upd, $user, $pass) = ('') x 5;
 
 GetOptions( "add!" => \$add,
             "del!" => \$del,
+            "upd!" => \$upd,
             "user=s" => \$user,
             "pass:s" => \$pass );
 
-usage() unless (($del and $user) or ($add and $user and $pass));
+usage() unless (($del and $user) or (($add or $upd) and $user and $pass));
 
 my $handle = Authen::Krb5::Admin->init_with_skey("root/admin", "/etc/root.keytab");
 
@@ -40,6 +41,16 @@ if ($handle) {
             exit 0;
         } else {
             exit Authen::Krb5::Admin::error_code;
+        }
+    } elsif ($upd and $pass) {
+        my $ap = Authen::Krb5::parse_name($user);
+        if ($ap) {
+             if ($handle->chpass_principal($ap, $pass)) {
+                print "$user updated.\n";
+                exit 0;
+             }
+        } else {
+            exit Authen::Krb5::Admin::error_code;   
         }
     } elsif ($del) {
         my $p = Authen::Krb5::parse_name($user);
