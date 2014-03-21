@@ -17,8 +17,8 @@ sub krbauth {
 sub handler {
     my $r = shift;
 
-    if ($r->header_only) {
-        $r->send_http_header("application/json");
+    if ($r->request_method eq "HEAD") {
+        $r->send_http_header;
         return OK;
     }
 
