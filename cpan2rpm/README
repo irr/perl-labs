@@ -1,0 +1,40 @@
+===============================================================================
+                                     PATCH
+===============================================================================
+
+-use Pod::Text; 
++use Pod::PlainText;
+-my $pod = Pod::Text->new(); 
++my $pod = Pod::PlainText->new();
+
+cat cpan2rpm-2.028.patch
+diff -rupN cpan2rpm-2.028-original/cpan2rpm cpan2rpm-2.028/cpan2rpm
+--- cpan2rpm-2.028-original/cpan2rpm    2005-06-18 02:06:54.000000000 -0300
++++ cpan2rpm-2.028/cpan2rpm     2014-03-21 07:51:05.041556035 -0300
+@@ -28,7 +28,7 @@ use strict;
+ use warnings;
+ use Getopt::Long;
+ use Sys::Hostname;
+-use Pod::Text;
++use Pod::PlainText;
+
+ my ($ME, $RPM, $TMPDIR, %RPMDIR, $CWD, %info, %meta, $ARGS);
+
+@@ -359,7 +359,7 @@ sub get_mod {
+
+ sub get_meta {
+     my $info = shift || $_; local $_;
+-    my $pod = Pod::Text->new();
++    my $pod = Pod::PlainText->new();
+
+     print "Metadata retrieval\n";
+
+cd cpan2rpm-2.028/
+patch -p1 < ../cpan2rpm-2.028.patch
+
+===============================================================================
+
+cpan2rpm --mk-rpm-dirs=~/rpm
+
+cpan2rpm --no-sign -i http://cpan.metacpan.org/authors/id/J/JH/JHORWITZ/Krb5-1.9.tar.gz
+cpan2rpm --no-sign --make-no-test -i http://cpan.metacpan.org/authors/id/S/SJ/SJQUINNEY/Authen-Krb5-Admin-0.17.tar.gz

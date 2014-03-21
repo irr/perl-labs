@@ -2,7 +2,7 @@
 # perl krb.pl --add --user=irr --pass=test123
 # perl krb.pl --del --user=irr
 # sudo kadmin.local -q "listprincs"
-use 5.014;
+use 5.010;
 
 use strict;
 use warnings;
@@ -36,7 +36,7 @@ if ($handle) {
         my $ap = Authen::Krb5::Admin::Principal->new;
         $ap->principal(Authen::Krb5::parse_name($user));
         if ($handle->create_principal($ap, $pass)) {
-            say "$user created.";
+            print "$user created.\n";
             exit 0;
         } else {
             exit Authen::Krb5::Admin::error_code;
@@ -44,7 +44,7 @@ if ($handle) {
     } elsif ($del) {
         my $p = Authen::Krb5::parse_name($user);
         if ($handle->delete_principal($p)) {
-            say "$user removed.";
+            print "$user removed.\n";
             exit 0;
         } else {
             exit Authen::Krb5::Admin::error_code;

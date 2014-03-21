@@ -1,0 +1,21 @@
+diff -rupN cpan2rpm-2.028-original/cpan2rpm cpan2rpm-2.028/cpan2rpm
+--- cpan2rpm-2.028-original/cpan2rpm	2005-06-18 02:06:54.000000000 -0300
++++ cpan2rpm-2.028/cpan2rpm	2014-03-21 07:51:05.041556035 -0300
+@@ -28,7 +28,7 @@ use strict;
+ use warnings;
+ use Getopt::Long;
+ use Sys::Hostname;
+-use Pod::Text;
++use Pod::PlainText;
+ 
+ my ($ME, $RPM, $TMPDIR, %RPMDIR, $CWD, %info, %meta, $ARGS);
+ 
+@@ -359,7 +359,7 @@ sub get_mod {
+ 
+ sub get_meta {
+     my $info = shift || $_; local $_;
+-    my $pod = Pod::Text->new();
++    my $pod = Pod::PlainText->new();
+ 
+     print "Metadata retrieval\n";
+ 
