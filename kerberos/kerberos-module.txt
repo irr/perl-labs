@@ -1,0 +1,61 @@
+===============================================================================
+SETUP
+===============================================================================
+1. KERBEROS
+yum install krb5-server krb5-workstation
+vim /etc/krb5.conf
+vim /var/kerberos/krb5kdc/kdc.conf
+vim /var/kerberos/krb5kdc/kadm5.acl
+kdb5_util create -s
+kadmin.local -q "addprinc root/admin"
+kadmin.local 
+ > addprinc -randkey host/<FQDN>"
+ > ktadd -k /etc/krb5.keytab host/<FQDN>
+restorecon -rv /etc/krb5.keytab
+lokkit --port=88:tcp
+lokkit --port=88:udp
+chkconfig krb5kdc on
+chkconfig kadmin on
+service krb5kdc start
+service kadmin start
+
+2. NGINX
+yum install perl-Try-Tiny perl-JSON
+rpm -ivh perl-Authen-Krb5-1.9-1.x86_64.rpm perl-Authen-Krb5-Admin-0.17-1.x86_64.rpm 
+./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/nginx
+make -j4
+make install
+
+3. API
+3.1 List users
+(dev)[irocha@irrlab kerberos (master)]$ curl --insecure -v https://localhost:8443/|python -mjson.tool
+...
+> GET / HTTP/1.1
+> User-Agent: curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.14.0.0 zlib/1.2.3 libidn/1.18 libssh2/1.4.2
+> Host: localhost:8443
+> Accept: */*
+>
+...
+{
+    "principals": [
+        "K/M@IRRLAB.COM.BR",
+        "host/irrlab.com.br@IRRLAB.COM.BR",
+        "ivan@IRRLAB.COM.BR",
+        "kadmin/admin@IRRLAB.COM.BR",
+        "kadmin/changepw@IRRLAB.COM.BR",
+        "kadmin/localhost.localdomain@IRRLAB.COM.BR",
+        "krbtgt/IRRLAB.COM.BR@IRRLAB.COM.BR",
+        "root/admin@IRRLAB.COM.BR"
+    ]
+}
+
+
+3.2 Add or update user password
+curl --insecure -v https://localhost:8443/ -d "action=add&user=ivan&pass=sun123";echo
+===> 200 OK
+
+3.3 Remove user
+curl --insecure -v https://localhost:8443/ -d "action=del&user=ivan";echo
+===> 200 OK
+===> 404
+
