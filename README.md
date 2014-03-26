@@ -98,7 +98,6 @@ cpanm -v -n Nginx::Test
 ```shell
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Cipher::AES
-cpanm -v -n Crypt::Random
 cpanm -v -n Digest::MD5
 ```
 
