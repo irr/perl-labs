@@ -69,6 +69,7 @@ cpanm -v -n Storable
 cpanm -v -n String::Util
 cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Try::Tiny
+cpanm -v -n URI::Encode
 cpanm -v -n YAML::Tiny
 cpanm -v -n WWW::Mechanize
 ```
