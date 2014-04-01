@@ -16,7 +16,8 @@ use Authen::Krb5::Admin qw(:constants);
 Authen::Krb5::init_context;
 
 sub usage {
-    print "sample: krb [--add|--del|--upd] --suser=root/admin --spass=/etc/root.keytab --user=<username> --pass=<password>\n";
+    print "krb-user-admin, version 0.1b (ivan.ribeiro\@gmail.com)\n";
+    print "krb [--add|--del|--upd] --suser=root/admin --spass=/etc/root.keytab --user=<username> --pass=<password>\n";
     exit 1;
 }
 
