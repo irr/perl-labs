@@ -2,6 +2,10 @@
 # perl krb.pl --add --user=irr --pass=test123
 # perl krb.pl --del --user=irr
 # sudo kadmin.local -q "listprincs"
+
+# sudo yum install perl-ExtUtils-Embed perl-Getopt-ArgvFile
+# pp -B -o centos6.5/krb krb.pl
+
 use 5.010;
 
 use strict;
