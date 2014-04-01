@@ -16,21 +16,23 @@ use Authen::Krb5::Admin qw(:constants);
 Authen::Krb5::init_context;
 
 sub usage {
-    print "krb [--add|--del|--upd] --user=<username> --pass=<password>\n";
+    print "sample: krb [--add|--del|--upd] --suser=root/admin --spass=/etc/root.keytab --user=<username> --pass=<password>\n";
     exit 1;
 }
 
-my ($add, $del, $upd, $user, $pass) = ('') x 5;
+my ($add, $del, $upd, $user, $pass, $suser, $spass) = ('') x 7;
 
 GetOptions( "add!" => \$add,
             "del!" => \$del,
             "upd!" => \$upd,
             "user=s" => \$user,
-            "pass:s" => \$pass );
+            "pass:s" => \$pass,
+            "suser:s" => \$suser, 
+            "spass:s" => \$spass );
 
-usage() unless (($del and $user) or (($add or $upd) and $user and $pass));
+usage() unless ($suser and $spass) and (($del and $user) or (($add or $upd) and $user and $pass));
 
-my $handle = Authen::Krb5::Admin->init_with_skey("root/admin", "/etc/root.keytab");
+my $handle = Authen::Krb5::Admin->init_with_skey($suser, $spass);
 
 if ($handle) {
     if ($add and $pass) {
