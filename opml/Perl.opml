@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+  <head>
+    <title>Subscriptions of Ivan Rocha tagged as Perl from InoReader [http://www.inoreader.com]</title>
+  </head>
+  <body>
+    <outline text="blogs.perl.org" title="blogs.perl.org" type="rss" xmlUrl="http://blogs.perl.org/atom.xml" htmlUrl="http://blogs.perl.org/"/>
+    <outline text="bingos" title="bingos" type="rss" xmlUrl="http://blogs.perl.org/users/bingos/atom.xml" htmlUrl="http://blogs.perl.org/users/bingos/"/>
+    <outline text="brian d foy" title="brian d foy" type="rss" xmlUrl="http://blogs.perl.org/users/brian_d_foy/atom.xml" htmlUrl="http://blogs.perl.org/users/brian_d_foy/"/>
+    <outline text="dagolden" title="dagolden" type="rss" xmlUrl="http://www.dagolden.com/index.php/feed/" htmlUrl="http://www.dagolden.com/"/>
+    <outline text="House Absolute(ly) Pointless" title="House Absolute(ly) Pointless" type="rss" xmlUrl="http://blog.urth.org/feed/" htmlUrl="http://blog.urth.org/"/>
+    <outline text="Leo Lapworth" title="Leo Lapworth" type="rss" xmlUrl="http://blogs.perl.org/users/leo_lapworth/atom.xml" htmlUrl="http://blogs.perl.org/users/leo_lapworth/"/>
+    <outline text="NYTProf v5 – Flaming Precision | Not this..." title="NYTProf v5 – Flaming Precision | Not this..." type="rss" xmlUrl="http://blog.timbunce.org/feed/" htmlUrl="http://blog.timbunce.org/"/>
+    <outline text="OpenSwartz" title="OpenSwartz" type="rss" xmlUrl="http://www.openswartz.com/feed/" htmlUrl="http://www.openswartz.com/"/>
+    <outline text="Sawyer X" title="Sawyer X" type="rss" xmlUrl="http://blogs.perl.org/users/sawyer_x/atom.xml" htmlUrl="http://blogs.perl.org/users/sawyer_x/"/>
+    <outline text="Sebastian Riedel about Perl and the Web" title="Sebastian Riedel about Perl and the Web" type="rss" xmlUrl="http://blog.kraih.com/rss" htmlUrl="http://blog.kraih.com/"/>
+    <outline text="The Universe of Discourse" title="The Universe of Discourse" type="rss" xmlUrl="http://blog.plover.com/index.rss" htmlUrl="http://blog.plover.com/"/>
+    <outline text="Perl.com" title="Perl.com" type="rss" xmlUrl="http://www.perl.com/pub/atom.xml" htmlUrl="http://www.perl.com/pub/"/>
+    <outline text="Perl News" title="Perl News" type="rss" xmlUrl="http://perlnews.org/feed/" htmlUrl="http://perlnews.org/"/>
+    <outline text="Perl Hacks" title="Perl Hacks" type="rss" xmlUrl="http://perlhacks.com/feed/" htmlUrl="http://perlhacks.com/"/>
+    <outline text="Perlbuzz" title="Perlbuzz" type="rss" xmlUrl="http://feeds.feedburner.com/PerlBuzz" htmlUrl="http://perlbuzz.com/"/>
+    <outline text="Modern Perl Books, a Modern Perl Blog" title="Modern Perl Books, a Modern Perl Blog" type="rss" xmlUrl="http://www.modernperlbooks.com/mt/atom.xml" htmlUrl="http://www.modernperlbooks.com/mt/"/>
+    <outline text="in scalar context" title="in scalar context" type="rss" xmlUrl="http://friedo.com/blog/atom.xml" htmlUrl="http://friedo.com/blog/"/>
+    <outline text="Ovid" title="Ovid" type="rss" xmlUrl="http://blogs.perl.org/users/ovid/atom.xml" htmlUrl="http://blogs.perl.org/users/ovid/"/>
+    <outline text="Perl Maven" title="Perl Maven" type="rss" xmlUrl="http://perlmaven.com/atom" htmlUrl=""/>
+  </body>
+</opml>
