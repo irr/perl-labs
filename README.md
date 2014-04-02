@@ -31,8 +31,12 @@ cd nginx-1.4.7
 wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.7.patch
 patch -p1 < tcp-1.4.7.patch
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
+or 
+./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
 make -j4
-make install
+make install 
+or
+sudo make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
 
@@ -55,7 +59,6 @@ cpanm -v -n Data::MessagePack
 cpanm -v -n DateTime
 cpanm -v -n DateTime::Tiny
 cpanm -v -n Eval::Closure
-cpanm -v -n HTTP::Thin
 cpanm -v -n IPC::System::Simple
 cpanm -v -n List::MoreUtils
 cpanm -v -n List::Util
@@ -106,6 +109,7 @@ cpanm -v -n Nginx::Test
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Cipher::AES
 cpanm -v -n Digest::MD5
+cpanm -v -n Digest::SHA256
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
