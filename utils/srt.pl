@@ -1,6 +1,5 @@
-#!/usr/local/bin/perlbrew.sh
+#!/usr/bin/env perl
 
-use 5.014;
 use strict;
 use warnings;
 
@@ -31,7 +30,7 @@ my $file = &trim(qx|file -bi "$ARGV[0]"|);
 my @encoding = split("charset=", $file);
 exit(1) if @encoding == 1;
 
-say "Original encoding: @encoding";
+print "Original encoding: @encoding\n";
 my @res = &readfile($encoding[1], $ARGV[0]);
 exit(1) if $? != 0;
 
@@ -43,4 +42,4 @@ $srt =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
 print $fh_out $srt;
 close($fh_out);
 
-say "Ok!";
+print "Ok!\n";
