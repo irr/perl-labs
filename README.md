@@ -40,7 +40,7 @@ Dependencies
 -----------
 
 ```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel lua-devel
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev
 ```
 
@@ -67,6 +67,7 @@ cpanm -v -n Perl::Critic
 cpanm -v -n Proc::ProcessTable
 cpanm -v -n Storable
 cpanm -v -n String::Util
+cpanm -v -n Task::Plack
 cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Try::Tiny
 cpanm -v -n URI::Encode
@@ -86,6 +87,11 @@ cpanm -v -n Dancer
 cpanm -v -n Dancer::Plugin::Database
 cpanm -v -n Dancer::Plugin::Redis
 cpanm -v -n Plack
+```
+
+```shell
+cpanm -v -n Lua::API
+# sudo ln -s /usr/lib64/pkgconfig/lua.pc /usr/lib64/pkgconfig/lua5.1.pc
 ```
 
 ```shell
