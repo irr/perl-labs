@@ -10,6 +10,7 @@ my $app = sub {
     
     my @filtered_keys = grep { reftype(\$env->{$_}) eq 'SCALAR' } keys %$env;
     my %filtered_hash = map { $_ => $env->{$_} } grep { exists $env->{$_} } @filtered_keys;
+    
     my $json = JSON->new->allow_nonref();
     my $body = $json->encode(\%filtered_hash) . "\n";
 
