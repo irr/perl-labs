@@ -65,7 +65,6 @@ cpanm -v -n List::Util
 cpanm -v -n MCE
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n Net::STOMP::Client
-cpanm -v -n PAR::Packer
 cpanm -v -n Parallel::ForkManager
 cpanm -v -n Perl::Critic
 cpanm -v -n Proc::ProcessTable
