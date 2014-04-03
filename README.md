@@ -58,7 +58,6 @@ cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Data::MessagePack
 cpanm -v -n DateTime
 cpanm -v -n DateTime::Tiny
-cpanm -v -n Eval::Closure
 cpanm -v -n IPC::System::Simple
 cpanm -v -n List::MoreUtils
 cpanm -v -n List::Util
