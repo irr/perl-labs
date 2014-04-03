@@ -7,10 +7,7 @@ perl-labs
 
  1. Get [Perlbrew]
 ```shell
-yum install perl-CPAN
-cpan App::cpanminus
-cpanm install App::perlbrew
-# or
+export PERLBREW_ROOT=/opt/perl5
 curl -kL http://install.perlbrew.pl | bash
 yum install perl-ExtUtils-MakeMaker
 # init
