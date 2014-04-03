@@ -12,6 +12,7 @@ cpan App::cpanminus
 cpanm install App::perlbrew
 # or
 curl -kL http://install.perlbrew.pl | bash
+yum install perl-ExtUtils-MakeMaker
 # init
 perlbrew init
 perlbrew mirror
