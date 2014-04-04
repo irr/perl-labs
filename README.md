@@ -14,7 +14,7 @@ yum install perl-ExtUtils-MakeMaker
 perlbrew init
 perlbrew mirror
 perlbrew available
-# Fetching perl-5.14.4 as /opt/perl5/perlbrew/dists/perl-5.14.4.tar.gz
+# Fetching perl-5.14.4 as /opt/perl5/dists/perl-5.14.4.tar.gz
 perlbrew install perl-5.14.4 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
 perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.14.4 and perlbrew switch-off
@@ -29,8 +29,7 @@ cd nginx-1.4.7
 wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.7.patch
 patch -p1 < tcp-1.4.7.patch
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
-or 
-./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
+proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
 make -j4
 make install 
 or
