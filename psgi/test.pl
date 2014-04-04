@@ -1,5 +1,5 @@
 # start_server --port 127.0.0.1:5000 -- starman --workers 4 test.pl
-# plackup -s Twiggy test.pl
+# plackup -s Starman test.pl
 # curl -s localhost:5000/|python -mjson.tool
 
 use JSON;
