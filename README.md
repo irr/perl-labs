@@ -53,10 +53,17 @@ cpanm -v -n Pod::POM::Web
 
 ```shell
 cpanm -v -n Authen::Krb5::Admin
+cpanm -v -n Crypt::CBC
+cpanm -v -n Crypt::Cipher::AES
 cpanm -v -n Data::MessagePack
 cpanm -v -n DateTime
 cpanm -v -n DateTime::Tiny
+cpanm -v -n DBD::SQLite
+cpanm -v -n DBD::mysql
+cpanm -v -n Digest::MD5
+cpanm -v -n Digest::SHA256
 cpanm -v -n IPC::System::Simple
+cpanm -v -n JSON
 cpanm -v -n List::MoreUtils
 cpanm -v -n List::Util
 cpanm -v -n MCE
@@ -65,6 +72,7 @@ cpanm -v -n Net::STOMP::Client
 cpanm -v -n Parallel::ForkManager
 cpanm -v -n Perl::Critic
 cpanm -v -n Proc::ProcessTable
+cpanm -v -n Redis
 cpanm -v -n Storable
 cpanm -v -n String::Util
 cpanm -v -n Task::Plack
@@ -73,20 +81,6 @@ cpanm -v -n Try::Tiny
 cpanm -v -n URI::Encode
 cpanm -v -n YAML::Tiny
 cpanm -v -n WWW::Mechanize
-```
-
-```shell
-cpanm -v -n DBD::SQLite
-cpanm -v -n DBD::mysql
-cpanm -v -n JSON
-cpanm -v -n Redis
-```
-
-```shell
-cpanm -v -n Dancer
-cpanm -v -n Dancer::Plugin::Database
-cpanm -v -n Dancer::Plugin::Redis
-cpanm -v -n Plack
 ```
 
 ```shell
@@ -99,13 +93,6 @@ cpanm -v -n --configure-args="--with-http_ssl_module" Nginx
 cpanm -v -n Nginx::HTTP
 cpanm -v -n Nginx::Redis
 cpanm -v -n Nginx::Test
-```
-
-```shell
-cpanm -v -n Crypt::CBC
-cpanm -v -n Crypt::Cipher::AES
-cpanm -v -n Digest::MD5
-cpanm -v -n Digest::SHA256
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
