@@ -1,6 +1,27 @@
 #!/usr/bin/env perl
-# perl krb.pl --add --user=irr --pass=test123
-# perl krb.pl --del --user=irr
+# sudo yum install krb5-server krb5-workstation
+# sudo vim /etc/krb5.conf
+# sudo vim /var/kerberos/krb5kdc/kdc.conf
+# sudo vim /var/kerberos/krb5kdc/kadm5.acl
+# sudo kdb5_util create -s
+# sudo kadmin.local -q "addprinc root/admin"
+# sudo kadmin.local 
+# > addprinc -randkey host/irrlab.com.br
+# > ktadd -k /etc/krb5.keytab host/irrlab.com.br
+# > ktadd -k /etc/root.keytab root/admin
+# sudo restorecon -rv /etc/root.keytab
+# sudo chown irocha: /etc/root.keytab
+# sudo restorecon -rv /etc/krb5.keytab
+# sudo lokkit --port=88:tcp
+# sudo lokkit --port=88:udp
+# sudo chkconfig krb5kdc on
+# sudo chkconfig kadmin on
+# sudo service krb5kdc start
+# sudo service kadmin start
+
+# ./krb.pl --add  --suser=root/admin --spass=/etc/root.keytab --user=ivan --pass=sun123
+# ./krb.pl --upd  --suser=root/admin --spass=/etc/root.keytab --user=ivan --pass=sun123sun123
+# ./krb.pl --del  --suser=root/admin --spass=/etc/root.keytab --user=ivan
 # sudo kadmin.local -q "listprincs"
 
 # sudo yum install perl-ExtUtils-Embed perl-Getopt-ArgvFile
