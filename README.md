@@ -14,7 +14,7 @@ yum install perl-ExtUtils-MakeMaker
 perlbrew init
 perlbrew mirror
 perlbrew available
-# Fetching perl-5.14.4 as /home/irocha/perl5/perlbrew/dists/perl-5.14.4.tar.gz
+# Fetching perl-5.14.4 as /opt/perl5/perlbrew/dists/perl-5.14.4.tar.gz
 perlbrew install perl-5.14.4 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
 perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.14.4 and perlbrew switch-off
