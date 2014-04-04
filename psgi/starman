@@ -1,5 +1,0 @@
-#!/bin/bash
-export PERLBREW_ROOT=/opt/perl5
-source ${PERLBREW_ROOT}/etc/bashrc
-perlbrew use perl-5.14.4 
-start_server --pid-file=/tmp/starman.pid --port 0.0.0.0:8080 -- starman --workers 4 /root/psgi/server.pl
