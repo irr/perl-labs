@@ -92,6 +92,7 @@ cpanm -v -n --configure-args="--with-http_ssl_module" Nginx
 cpanm -v -n Nginx::HTTP
 cpanm -v -n Nginx::Redis
 cpanm -v -n Nginx::Test
+cpanm -v -n Test::Nginx::Socket
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
