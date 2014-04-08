@@ -5,7 +5,7 @@ perl-labs
 
 **Nginx** with *Perl* module enabled:
 
- 1. Get [Perlbrew]
+ Get [Perlbrew]
 ```shell
 export PERLBREW_ROOT=/opt/perl5
 curl -kL http://install.perlbrew.pl | bash
@@ -21,7 +21,7 @@ perlbrew switch perl-5.14.4 and perlbrew switch-off
 perlbrew use perl-5.14.4 and exit or perlbrew off
 ```
 
- 2. Get [Nginx]
+ Get [Nginx]
 ```shell
 wget http://nginx.org/download/nginx-1.4.7.tar.gz
 tar xfva nginx-1.4.7.tar.gz
@@ -37,7 +37,7 @@ sudo make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
 
- 3. [Software Collections]
+ [Software Collections]
 ```shell 
 sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
 sudo yum update -y
