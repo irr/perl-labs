@@ -37,6 +37,14 @@ sudo make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
 
+ 3. [Software Collections]
+```shell 
+sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
+sudo yum update -y
+sudo yum install --nogpg -y perl516
+scl enable perl516 <script>
+```
+
 Dependencies
 -----------
 
@@ -118,3 +126,4 @@ limitations under the License.
 [Perlbrew]: http://perlbrew.pl/
 [nginx_tcp_proxy_module]: https://github.com/irr/nginx_tcp_proxy_module
 [headers-more-nginx-module]: https://github.com/agentzh/headers-more-nginx-module
+[Software Collections]: https://www.softwarecollections.org/en/scls/rhscl/perl516/
