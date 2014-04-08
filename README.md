@@ -37,7 +37,7 @@ sudo make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
 
- [Software Collections]
+ Get [Software Collections]
 ```shell 
 sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
 sudo yum update -y
