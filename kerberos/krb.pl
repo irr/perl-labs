@@ -39,58 +39,87 @@ use Getopt::Long;
 use Authen::Krb5;
 use Authen::Krb5::Admin qw(:constants);
 
+use JSON;
+
+my $json = JSON->new->allow_nonref;
+
 Authen::Krb5::init_context;
 
 sub usage {
-    print "krb-user-admin, version 0.1b (ivan.ribeiro\@gmail.com)\n";
-    print "krb [--add|--del|--upd] --suser=root/admin --spass=/etc/root.keytab --user=<username> --pass=<password>\n";
+    print "krb-user-admin, version 0.1e (ivan.ribeiro\@gmail.com)\n";
+    print "krb [--add|--del|--lst] --suser=host/admin --spass=/etc/hostadm.keytab --user=<username> --pass=<password>\n";
     exit 1;
 }
 
-my ($add, $del, $upd, $user, $pass, $suser, $spass) = ('') x 7;
+sub status {
+    my $user = shift;
+    my $status = shift;
+    my $ret = $json->encode({ "user" => $user, "status" => $status });
+    print "$ret\n";
+}
+
+my ($add, $del, $lst, $user, $pass, $suser, $spass) = ('') x 7;
 
 GetOptions( "add!" => \$add,
             "del!" => \$del,
-            "upd!" => \$upd,
+            "lst!" => \$lst,
             "user=s" => \$user,
             "pass:s" => \$pass,
             "suser:s" => \$suser, 
             "spass:s" => \$spass );
 
-usage() unless ($suser and $spass) and (($del and $user) or (($add or $upd) and $user and $pass));
+usage() unless (($suser and $spass) and ($lst or ($del and $user) or ($add and $user and $pass)));
 
 my $handle = Authen::Krb5::Admin->init_with_skey($suser, $spass);
 
 if ($handle) {
-    if ($add and $pass) {
-        my $ap = Authen::Krb5::Admin::Principal->new;
+    if ($lst) { 
+        my @names = $handle->get_principals();
+        if ($#names > 0) {    
+            my $princs = $json->encode({ "principals" => \@names });
+            print "$princs\n";
+        } else {
+            print "{\"principals\":[]}\n";
+        }        
+    } elsif ($add and $pass) {
+        my $ap = $handle->get_principal(Authen::Krb5::parse_name($user));
+        if ($ap) {
+            $ap = Authen::Krb5::parse_name($user);
+            if ($handle->chpass_principal($ap, $pass)) {
+                status($user, 0);
+                exit 0;
+            } else {
+                status($user, Authen::Krb5::Admin::error_code);
+                exit Authen::Krb5::Admin::error_code;   
+            }
+        }        
+        $ap = Authen::Krb5::Admin::Principal->new;
         $ap->principal(Authen::Krb5::parse_name($user));
         if ($handle->create_principal($ap, $pass)) {
-            print "$user created.\n";
+            status($user, 0);
             exit 0;
         } else {
+            status($user, Authen::Krb5::Admin::error_code);
             exit Authen::Krb5::Admin::error_code;
-        }
-    } elsif ($upd and $pass) {
-        my $ap = Authen::Krb5::parse_name($user);
-        if ($ap) {
-             if ($handle->chpass_principal($ap, $pass)) {
-                print "$user updated.\n";
-                exit 0;
-             }
-        } else {
-            exit Authen::Krb5::Admin::error_code;   
         }
     } elsif ($del) {
         my $p = Authen::Krb5::parse_name($user);
-        if ($handle->delete_principal($p)) {
-            print "$user removed.\n";
-            exit 0;
+        my $ap = $handle->get_principal($p); 
+        if ($ap) {
+            if ($handle->delete_principal($p)) {
+                status($user, 0);
+                exit 0;
+            } else {
+                status($user, Authen::Krb5::Admin::error_code);
+                exit Authen::Krb5::Admin::error_code;
+            }
         } else {
-            exit Authen::Krb5::Admin::error_code;
+            status($user, 0);
+            exit 0;
         }
     }
 } else {
+    status("", Authen::Krb5::Admin::error_code);
     exit Authen::Krb5::Admin::error_code;
 }
 
