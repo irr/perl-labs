@@ -80,7 +80,8 @@ if ($handle) {
             print "$princs\n";
         } else {
             print "{\"principals\":[]}\n";
-        }        
+        }  
+        exit 0;      
     } elsif ($add and $pass) {
         my $ap = $handle->get_principal(Authen::Krb5::parse_name($user));
         if ($ap) {
