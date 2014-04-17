@@ -29,7 +29,6 @@ cd nginx-1.4.7
 wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.7.patch
 patch -p1 < tcp-1.4.7.patch
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
-proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
 make -j4
 make install 
 or
