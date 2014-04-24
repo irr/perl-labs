@@ -23,11 +23,11 @@ perlbrew use perl-5.14.4 and exit or perlbrew off
 
  Get [Nginx]
 ```shell
-wget http://nginx.org/download/nginx-1.4.7.tar.gz
-tar xfva nginx-1.4.7.tar.gz
-cd nginx-1.4.7
-wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.4.7.patch
-patch -p1 < tcp-1.4.7.patch
+wget http://nginx.org/download/nginx-1.6.0.tar.gz
+tar xfva nginx-1.6.0.tar.gz
+cd nginx-1.6.0
+wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.6.0.patch
+patch -p1 < tcp-1.6.0.patch
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
 make -j4
 make install 
