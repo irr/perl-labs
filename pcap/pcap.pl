@@ -1,7 +1,9 @@
-# yum install libpcap-devel
-# apt-get install libpcap-dev
+# yum install libpcap-devel or apt-get install libpcap-dev
+# and
 # cpanm -v Net::Pcap
 # cpanm -v NetPacket::Ethernet
+# or
+# apt-get install libnet-pcap-perl libnetpacket-perl
 # su -c "perl pcap.pl eth0"
 
 use Net::Pcap;
