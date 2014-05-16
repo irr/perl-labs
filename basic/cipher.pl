@@ -5,7 +5,8 @@ use diagnostics;
 use 5.014;
 
 use Crypt::CBC;
-use Crypt::Cipher::AES;
+use Crypt::Rijndael;
+#use Crypt::Twofish;
 
 sub md5 {
     my $ctx = Digest::MD5->new;
@@ -18,7 +19,9 @@ my $iv = 'aa90025f918a9696';
 
 my $text = "alessandra cristina dos santos";
 
-my $cbc = Crypt::CBC->new(cipher=>'Cipher::AES', key=>$key, iv=>$iv);
+#my $cbc = Crypt::CBC->new(cipher=>'Twofish', key=>$key, iv=>$iv);
+my $cbc = Crypt::CBC->new(cipher=>'Rijndael', key=>$key, iv=>$iv);
+
 my $ciphertext = $cbc->encrypt($text);
 my $hexcipher = unpack("H*", $ciphertext);
 my $decrypted = $cbc->decrypt(pack("H*", $hexcipher));

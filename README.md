@@ -5,6 +5,14 @@ perl-labs
 
 **Nginx** with *Perl* module enabled:
 
+Ubuntu 14.04 LTS
+```shell
+apt-get install perl-doc-html libterm-readline-gnu-perl libpar-packer-perl libtry-tiny-perl libjson-perl libredis-perl libcache-memcached-perl libdbd-mysql-perl libplack-perl libauthen-krb5-admin-perl starman libcrypt-cbc-perl libcrypt-rijndael-perl libpod-webserver-perl
+```
+```shell
+http://search.cpan.org/~kazuho/Net-Server-SS-PreFork-0.05/lib/Net/Server/SS/PreFork.pm
+```
+
  Get [Perlbrew]
 ```shell
 export PERLBREW_ROOT=/opt/perl5
@@ -50,11 +58,6 @@ Dependencies
 ```shell
 sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev
-```
-
-```shell
-cpanm -v -n Pod::POM::Web
-# perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
 
 ```shell
