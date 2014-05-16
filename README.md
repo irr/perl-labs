@@ -7,7 +7,7 @@ perl-labs
 
 Ubuntu 14.04 LTS
 ```shell
-apt-get install perl-doc-html libperl-dev libterm-readline-gnu-perl libpar-packer-perl libtry-tiny-perl libjson-perl libredis-perl libcache-memcached-perl libdbd-mysql-perl libplack-perl libauthen-krb5-admin-perl starman libcrypt-cbc-perl libcrypt-rijndael-perl libpod-webserver-perl libpoe-perl libwww-mechanize-perl libnet-pcap-perl libnetpacket-perl
+apt-get install perl-doc-html libperl-dev libterm-readline-gnu-perl libpar-packer-perl libtry-tiny-perl libjson-perl libredis-perl libcache-memcached-perl libdbd-mysql-perl libplack-perl libauthen-krb5-admin-perl starman libcrypt-cbc-perl libcrypt-rijndael-perl libpod-webserver-perl libpoe-perl libwww-mechanize-perl libnet-pcap-perl libnetpacket-perl libdancer-perl
 ```
 ```shell
 http://search.cpan.org/~kazuho/Net-Server-SS-PreFork-0.05/lib/Net/Server/SS/PreFork.pm
