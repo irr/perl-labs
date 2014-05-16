@@ -11,6 +11,80 @@ apt-get install perl-doc-html libperl-dev libterm-readline-gnu-perl libpar-packe
 ```
 ```shell
 http://search.cpan.org/~kazuho/Net-Server-SS-PreFork-0.05/lib/Net/Server/SS/PreFork.pm
+
+[irocha@irrlab perl]$ tar xfva /media/irocha/128G/Sources/Net-Server-SS-PreFork-0.05.tar.gz 
+Net-Server-SS-PreFork-0.05/
+Net-Server-SS-PreFork-0.05/Changes
+Net-Server-SS-PreFork-0.05/inc/
+Net-Server-SS-PreFork-0.05/lib/
+Net-Server-SS-PreFork-0.05/Makefile.PL
+Net-Server-SS-PreFork-0.05/MANIFEST
+Net-Server-SS-PreFork-0.05/META.yml
+Net-Server-SS-PreFork-0.05/README
+Net-Server-SS-PreFork-0.05/t/
+Net-Server-SS-PreFork-0.05/t/00-base.t
+Net-Server-SS-PreFork-0.05/t/01-httpd.pl
+Net-Server-SS-PreFork-0.05/t/01-httpd.t
+Net-Server-SS-PreFork-0.05/t/02-multiport.t
+Net-Server-SS-PreFork-0.05/lib/Net/
+Net-Server-SS-PreFork-0.05/lib/Net/Server/
+Net-Server-SS-PreFork-0.05/lib/Net/Server/SS/
+Net-Server-SS-PreFork-0.05/lib/Net/Server/SS/PreFork.pm
+Net-Server-SS-PreFork-0.05/inc/HTTP/
+Net-Server-SS-PreFork-0.05/inc/LWP/
+Net-Server-SS-PreFork-0.05/inc/Module/
+Net-Server-SS-PreFork-0.05/inc/Test/
+Net-Server-SS-PreFork-0.05/inc/Test/TCP.pm
+Net-Server-SS-PreFork-0.05/inc/Module/AutoInstall.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/
+Net-Server-SS-PreFork-0.05/inc/Module/Install.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/AutoInstall.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Base.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Can.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Fetch.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Include.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Makefile.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Metadata.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/Win32.pm
+Net-Server-SS-PreFork-0.05/inc/Module/Install/WriteAll.pm
+Net-Server-SS-PreFork-0.05/inc/LWP/Simple.pm
+Net-Server-SS-PreFork-0.05/inc/HTTP/Server/
+Net-Server-SS-PreFork-0.05/inc/HTTP/Server/Simple/
+Net-Server-SS-PreFork-0.05/inc/HTTP/Server/Simple/CGI.pm
+[irocha@irrlab perl]$ cd Net-Server-SS-PreFork-0.05/
+[irocha@irrlab Net-Server-SS-PreFork-0.05]$ ll
+total 40
+drwxr-xr-x 5 irocha irocha 4096 Fev 21  2010 ./
+drwxr-xr-x 4 irocha irocha 4096 Mai 16 17:30 ../
+-rw-r--r-- 1 irocha irocha  570 Fev 21  2010 Changes
+drwxr-xr-x 6 irocha irocha 4096 Mai 16 17:30 inc/
+drwxr-xr-x 3 irocha irocha 4096 Mai 16 17:30 lib/
+-rw-r--r-- 1 irocha irocha  393 Fev 16  2010 Makefile.PL
+-rw-r--r-- 1 irocha irocha  529 Fev 21  2010 MANIFEST
+-rw-r--r-- 1 irocha irocha  608 Fev 21  2010 META.yml
+-rw-r--r-- 1 irocha irocha   33 Fev 16  2010 README
+drwxr-xr-x 2 irocha irocha 4096 Fev 21  2010 t/
+[irocha@irrlab Net-Server-SS-PreFork-0.05]$ perl Makefile.PL 
+*** Module::AutoInstall version 1.03
+*** Checking for Perl dependencies...
+[Core Features]
+- LWP::Simple               ...loaded. (5.827)
+- Test::TCP                 ...loaded. (0.16 >= 0.06)
+- HTTP::Server::Simple::CGI ...loaded. (0.44)
+- Net::Server               ...loaded. (2.007)
+- Server::Starter           ...loaded. (0.15 >= 0.02)
+*** Module::AutoInstall configuration finished.
+Checking if your kit is complete...
+Looks good
+Writing Makefile for Net::Server::SS::PreFork
+Writing MYMETA.yml and MYMETA.json
+[irocha@irrlab Net-Server-SS-PreFork-0.05]$ make
+cp lib/Net/Server/SS/PreFork.pm blib/lib/Net/Server/SS/PreFork.pm
+Manifying blib/man3/Net::Server::SS::PreFork.3pm
+[irocha@irrlab Net-Server-SS-PreFork-0.05]$ sudo make install
+Installing /usr/local/share/perl/5.18.2/Net/Server/SS/PreFork.pm
+Installing /usr/local/man/man3/Net::Server::SS::PreFork.3pm
+Appending installation info to /usr/local/lib/perl/5.18.2/perllocal.pod
 ```
 
  Get [Perlbrew]
@@ -63,41 +137,16 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```shell
 cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
-cpanm -v -n Crypt::Cipher::AES
-cpanm -v -n Data::MessagePack
-cpanm -v -n DateTime
-cpanm -v -n DateTime::Tiny
-cpanm -v -n DBD::SQLite
+cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
-cpanm -v -n Digest::MD5
-cpanm -v -n Digest::SHA256
-cpanm -v -n IPC::System::Simple
 cpanm -v -n JSON
-cpanm -v -n List::MoreUtils
-cpanm -v -n List::Util
-cpanm -v -n MCE
 cpanm -v -n Net::Server::SS::PreFork
-cpanm -v -n Net::STOMP::Client
-cpanm -v -n Parallel::ForkManager
-cpanm -v -n Perl::Critic
-cpanm -v -n Proc::ProcessTable
 cpanm -v -n Redis
-cpanm -v -n Storable
-cpanm -v -n String::Util
 cpanm -v -n Task::Plack
 cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Try::Tiny
-cpanm -v -n URI::Encode
 cpanm -v -n YAML::Tiny
 cpanm -v -n WWW::Mechanize
-```
-
-```shell
-cpanm -v -n --configure-args="--with-http_ssl_module" Nginx
-cpanm -v -n Nginx::HTTP
-cpanm -v -n Nginx::Redis
-cpanm -v -n Nginx::Test
-cpanm -v -n Test::Nginx::Socket
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
