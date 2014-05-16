@@ -11,8 +11,8 @@ use YAML;
 
 sub load {
     my $file = shift;
-    my $_ =`cat $file` or die $!;
-    return /(\w+)/g;
+    my $contents =`cat $file` or die $!;
+    return ($contents =~ /(\w+)/g);
 }
 
 sub test {
