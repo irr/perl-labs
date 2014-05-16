@@ -5,7 +5,7 @@ use 5.014;
 use warnings;
 use strict;
 
-use Data::MessagePack;
+use JSON;
 
 sub new {
     my ($class, %args) = @_;
@@ -73,8 +73,8 @@ sub query {
 
 sub freeze {
     my ($self, $file) = @_;
-    my $mp = Data::MessagePack->new();
-    my $data = $mp->pack([$self->{classes}, $self->{sets}]); 
+    my $json = JSON->new->allow_nonref();
+    my $data = $json->encode([$self->{classes}, $self->{sets}]); 
     open(my $out, '>:raw', $file) or die "Unable to open: $!";
     print $out $data;
     close($out);
@@ -87,8 +87,8 @@ sub unfreeze {
     open(my $in, '<:raw', $file) or die "Unable to open: $!";
     read($in, $bin, $size);
     close($in);
-    my $mp = Data::MessagePack->new();
-    my $data = $mp->unpack($bin);
+    my $json = JSON->new->allow_nonref();
+    my $data = $json->decode($bin);
     $self->{classes} = @{$data}[0];
     $self->{sets} = @{$data}[1];
 }
