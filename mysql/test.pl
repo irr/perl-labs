@@ -1,4 +1,4 @@
-#!/usr/local/bin/perlbrew.sh
+#!/usr/bin/env perl
 
 use DBI;
 use Time::HiRes qw(time);
