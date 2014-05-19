@@ -39,6 +39,7 @@ sub post {
     my $redis = Redis->new();
     my $key = $r->uri;
     $redis->set('last_uri' => $key);
+    $redis->incr('hits');
     $json_text = $json->encode( { $key => \%params } );
     $redis->quit;
   };
@@ -50,7 +51,7 @@ sub post {
 
   $r->send_http_header("application/json");
   $r->print($json_text);
-  $r->rflush;
+  $r->flush();
     
   return OK;
 }
