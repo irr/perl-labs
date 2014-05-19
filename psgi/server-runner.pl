@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# pp -M Plack::Handler::Standalone -M Plack::Loader -M Plack::Middleware::Lint -M Plack::Middleware::StackTrace -B -o test server-runner.pl 
+
 # start_server --port 127.0.0.1:5000 -- starman --workers 4 server.pl
 # ./server.pl -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4
 # curl -s localhost:5000/|python -mjson.tool
@@ -28,11 +30,7 @@ my $app = Plack::Middleware::AccessLog->wrap(sub {
     }
 }, format => "combined");
 
-unless (caller) {
-    require Plack::Runner;
-    my $runner = Plack::Runner->new;
-    $runner->parse_options(@ARGV);
-    return $runner->run($app);
-}
-
-return $app;
+require Plack::Runner;
+my $runner = Plack::Runner->new;
+$runner->parse_options(@ARGV);
+return $runner->run($app);
