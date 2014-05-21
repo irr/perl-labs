@@ -1,14 +1,16 @@
 #!/usr/bin/env perl
 
 # sudo yum install krb5-server krb5-workstation
-# sudo apt-get install krb5-kdc krb5-admin-server krb5-user
+# sudo apt-get install krb5-kdc krb5-admin-server krb5-user krb5-multidev libkrb5-dev
 
 # Ubuntu and CentOS
-# sudo vim /etc/krb5.conf
+# sudo vim /etc/krb5.conf (rdns = false)
 
 # Ubuntu
 # https://help.ubuntu.com/14.04/serverguide/kerberos.html
 # sudo vim /etc/krb5kdc/kadm5.acl
+# sudo service krb5-admin-server restart
+# sudo service krb5-kdc restart
 
 # CentOS
 # sudo vim /var/kerberos/krb5kdc/kdc.conf
@@ -21,7 +23,7 @@
 # > addprinc -randkey host/admin
 # > ktadd -k /etc/krb5.keytab host/irrlab.com.br
 # > ktadd -k /etc/hostadm.keytab host/admin
-# sudo chown irocha: /etc/hostadm.keytab
+# sudo chown irocha: /etc/*.keytab
 # sudo restorecon -rv /etc
 # sudo lokkit --port=88:tcp
 # sudo lokkit --port=88:udp
@@ -33,6 +35,8 @@
 # ./krb.pl --add  --suser=host/admin --spass=/etc/hostadm.keytab --user=ivan --pass=sun123
 # ./krb.pl --upd  --suser=host/admin --spass=/etc/hostadm.keytab --user=ivan --pass=sun123sun123
 # ./krb.pl --del  --suser=host/admin --spass=/etc/hostadm.keytab --user=ivan
+# ./krb.pl --lst  --suser=host/admin --spass=/etc/hostadm.keytab
+
 # sudo kadmin.local -q "listprincs"
 
 # sudo yum install perl-ExtUtils-Embed perl-Getopt-ArgvFile
