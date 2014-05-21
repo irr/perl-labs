@@ -1,9 +1,19 @@
-#!/usr/local/bin/perlbrew.sh
+#!/usr/bin/env perl
 
 # sudo yum install krb5-server krb5-workstation
+# sudo apt-get install krb5-kdc krb5-admin-server krb5-user
+
+# Ubuntu and CentOS
 # sudo vim /etc/krb5.conf
+
+# Ubuntu
+# https://help.ubuntu.com/14.04/serverguide/kerberos.html
+# sudo vim /etc/krb5kdc/kadm5.acl
+
+# CentOS
 # sudo vim /var/kerberos/krb5kdc/kdc.conf
 # sudo vim /var/kerberos/krb5kdc/kadm5.acl
+
 # sudo kdb5_util create -s
 # sudo kadmin.local -q "addprinc root/admin"
 # sudo kadmin.local 
@@ -120,7 +130,7 @@ if ($handle) {
         }
     }
 } else {
-    status("", Authen::Krb5::Admin::error_code);
+   status("", Authen::Krb5::Admin::error_code);
     exit Authen::Krb5::Admin::error_code;
 }
 
