@@ -5,7 +5,82 @@ perl-labs
 
 **Nginx** with *Perl* module enabled:
 
-Ubuntu 14.04 LTS
+ Get [Perlbrew]
+```shell
+export PERLBREW_ROOT=/opt/perl5
+
+# CentOS
+sudo yum install perl-ExtUtils-MakeMaker
+curl -kL http://install.perlbrew.pl | bash
+
+# Ubuntu
+sudo apt-get install perlbrew build-essential
+
+# Install
+perlbrew init
+perlbrew mirror
+perlbrew available
+perlbrew install-patchperl
+perlbrew install perl-5.14.4 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
+perlbrew install-cpanm or cpan -i App::cpanminus
+perlbrew switch perl-5.14.4 and perlbrew switch-off
+perlbrew use perl-5.14.4 and exit or perlbrew off
+```
+
+ Get [Nginx]
+```shell
+wget http://nginx.org/download/nginx-1.6.0.tar.gz
+tar xfva nginx-1.6.0.tar.gz
+wget https://github.com/yaoweibin/nginx_tcp_proxy_module/archive/v0.4.5.tar.gz -O nginx_tcp_proxy_module-0.4.5.tar.gz
+tar xfva nginx_tcp_proxy_module-0.4.5.tar.gz
+wget https://github.com/openresty/headers-more-nginx-module/archive/v0.25.tar.gz -O headers-more-nginx-module-0.25.tar.gz 
+tar xfva headers-more-nginx-module-0.25.tar.gz
+cd nginx-1.6.0
+wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.6.0.patch
+patch -p1 < tcp-1.6.0.patch
+./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module-0.4.5 --add-module=/opt/perl/headers-more-nginx-module-0.25
+make -j4
+make install 
+sudo ln -s /opt/perl/nginx/sbin/nginx /usr/local/bin/nginx
+or
+sudo make install
+/opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
+```
+
+CPAN
+-----------
+
+```shell
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev
+```
+
+```shell
+cpanm -v -n Authen::Krb5::Admin
+cpanm -v -n Crypt::CBC
+cpanm -v -n Crypt::Rijndael
+cpanm -v -n DBD::mysql
+cpanm -v -n JSON
+cpanm -v -n Net::Server::SS::PreFork
+cpanm -v -n Perl::Critic
+cpanm -v -n Redis
+cpanm -v -n Task::Plack
+cpanm -v -n Test::Nginx::Socket
+cpanm -v -n Term::ReadLine::Gnu
+cpanm -v -n Try::Tiny
+cpanm -v -n YAML::Tiny
+cpanm -v -n WWW::Mechanize
+```
+
+ Get [Software Collections]
+```shell 
+sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
+sudo yum update -y
+sudo yum install --nogpg -y perl516
+scl enable perl516 <script>
+```
+
+Ubuntu 14.04 LTS (Packages)
 ```shell
 sudo apt-get install perl-doc-html libperl-dev libterm-readline-gnu-perl libpar-packer-perl libtry-tiny-perl libjson-perl libredis-perl libcache-memcached-perl libdbd-mysql-perl libplack-perl libauthen-krb5-admin-perl starman libcrypt-cbc-perl libcrypt-rijndael-perl libpod-webserver-perl libpoe-perl libwww-mechanize-perl libnet-pcap-perl libnetpacket-perl libdancer-perl libarchive-any-perl libdatetime-perl libparallel-forkmanager-perl
 ```
@@ -85,74 +160,6 @@ Manifying blib/man3/Net::Server::SS::PreFork.3pm
 Installing /usr/local/share/perl/5.18.2/Net/Server/SS/PreFork.pm
 Installing /usr/local/man/man3/Net::Server::SS::PreFork.3pm
 Appending installation info to /usr/local/lib/perl/5.18.2/perllocal.pod
-```
-
- Get [Perlbrew]
-```shell
-export PERLBREW_ROOT=/opt/perl5
-
-# CentOS
-sudo yum install perl-ExtUtils-MakeMaker
-curl -kL http://install.perlbrew.pl | bash
-
-# Ubuntu
-sudo apt-get install perlbrew build-essential
-
-# Install
-perlbrew init
-perlbrew mirror
-perlbrew available
-perlbrew install-patchperl
-perlbrew install perl-5.14.4 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
-perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.14.4 and perlbrew switch-off
-perlbrew use perl-5.14.4 and exit or perlbrew off
-```
-
- Get [Nginx]
-```shell
-wget http://nginx.org/download/nginx-1.6.0.tar.gz
-tar xfva nginx-1.6.0.tar.gz
-cd nginx-1.6.0
-wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.6.0.patch
-patch -p1 < tcp-1.6.0.patch
-./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module --add-module=/opt/perl/headers-more-nginx-module-0.25
-make -j4
-make install 
-or
-sudo make install
-/opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
-```
-
- Get [Software Collections]
-```shell 
-sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
-sudo yum update -y
-sudo yum install --nogpg -y perl516
-scl enable perl516 <script>
-```
-
-Dependencies
------------
-
-```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
-sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev
-```
-
-```shell
-cpanm -v -n Authen::Krb5::Admin
-cpanm -v -n Crypt::CBC
-cpanm -v -n Crypt::Rijndael
-cpanm -v -n DBD::mysql
-cpanm -v -n JSON
-cpanm -v -n Net::Server::SS::PreFork
-cpanm -v -n Redis
-cpanm -v -n Task::Plack
-cpanm -v -n Term::ReadLine::Gnu
-cpanm -v -n Try::Tiny
-cpanm -v -n YAML::Tiny
-cpanm -v -n WWW::Mechanize
 ```
 
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
