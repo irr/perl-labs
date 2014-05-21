@@ -7,15 +7,13 @@ perl-labs
 
  Get [Perlbrew]
 ```shell
+# Ubuntu and CentOS
 export PERLBREW_ROOT=/opt/perl5
-
 # CentOS
 sudo yum install perl-ExtUtils-MakeMaker
 curl -kL http://install.perlbrew.pl | bash
-
 # Ubuntu
 sudo apt-get install perlbrew build-essential
-
 # Install
 perlbrew init
 perlbrew mirror
@@ -52,7 +50,7 @@ CPAN
 
 ```shell
 sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
-sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev krb5-multidev libkrb5-dev
 ```
 
 ```shell
