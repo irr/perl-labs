@@ -7,7 +7,7 @@ perl-labs
 
 Ubuntu 14.04 LTS
 ```shell
-apt-get install perl-doc-html libperl-dev libterm-readline-gnu-perl libpar-packer-perl libtry-tiny-perl libjson-perl libredis-perl libcache-memcached-perl libdbd-mysql-perl libplack-perl libauthen-krb5-admin-perl starman libcrypt-cbc-perl libcrypt-rijndael-perl libpod-webserver-perl libpoe-perl libwww-mechanize-perl libnet-pcap-perl libnetpacket-perl libdancer-perl libarchive-any-perl libdatetime-perl libparallel-forkmanager-perl
+sudo apt-get install perl-doc-html libperl-dev libterm-readline-gnu-perl libpar-packer-perl libtry-tiny-perl libjson-perl libredis-perl libcache-memcached-perl libdbd-mysql-perl libplack-perl libauthen-krb5-admin-perl starman libcrypt-cbc-perl libcrypt-rijndael-perl libpod-webserver-perl libpoe-perl libwww-mechanize-perl libnet-pcap-perl libnetpacket-perl libdancer-perl libarchive-any-perl libdatetime-perl libparallel-forkmanager-perl
 ```
 ```shell
 http://search.cpan.org/~kazuho/Net-Server-SS-PreFork-0.05/lib/Net/Server/SS/PreFork.pm
@@ -90,16 +90,23 @@ Appending installation info to /usr/local/lib/perl/5.18.2/perllocal.pod
  Get [Perlbrew]
 ```shell
 export PERLBREW_ROOT=/opt/perl5
+
+# CentOS
+sudo yum install perl-ExtUtils-MakeMaker
 curl -kL http://install.perlbrew.pl | bash
-yum install perl-ExtUtils-MakeMaker
-# init
+
+# Ubuntu
+sudo apt-get install perlbrew build-essential
+
+# Install
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.18.2 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
+perlbrew install-patchperl
+perlbrew install perl-5.14.4 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
 perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.18.2 and perlbrew switch-off
-perlbrew use perl-5.18.2 and exit or perlbrew off
+perlbrew switch perl-5.14.4 and perlbrew switch-off
+perlbrew use perl-5.14.4 and exit or perlbrew off
 ```
 
  Get [Nginx]
