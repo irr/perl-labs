@@ -1,9 +1,11 @@
 use Test::Nginx::Socket;
 
-perl_modules("perl_modules /home/irocha/perl/nginx;");
-perl_require("perl_require test.pm;");
+our $PLInit = <<_EOC_
+perl_modules /home/irocha/perl/nginx;
+perl_require test.pm;
+_EOC_
 
-repeat_each(1);
+;repeat_each(1);
 
 plan tests => $Test::Nginx::Socket::RepeatEach * 2 * blocks();
 
@@ -16,6 +18,7 @@ run_tests();
 __DATA__
 
 === TEST 1: basic
+--- http_config eval: $::PLInit
 --- config
     location /test {
       perl test::handler;
