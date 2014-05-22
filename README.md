@@ -59,6 +59,7 @@ cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
 cpanm -v -n JSON
 cpanm -v -n Net::Server::SS::PreFork
+cpanm -v -n PAR::Packer
 cpanm -v -n Perl::Critic
 cpanm -v -n Redis
 cpanm -v -n Task::Plack
