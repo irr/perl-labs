@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # pp -M Plack::Handler::Standalone -M Plack::Loader -M Plack::Middleware::Lint -M Plack::Middleware::StackTrace -B -o test server-runner.pl 
 
