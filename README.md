@@ -18,10 +18,10 @@ sudo apt-get install perlbrew build-essential
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.18.2 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
+perlbrew install perl-5.20.0 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
 perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.18.2 and perlbrew switch-off
-perlbrew use perl-5.18.2 and exit or perlbrew off
+perlbrew switch perl-5.20.0 and perlbrew switch-off
+perlbrew use perl-5.20.0 and exit or perlbrew off
 ```
 
  Get [Nginx]
@@ -53,7 +53,6 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlit
 ```
 
 ```shell
-cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
@@ -61,7 +60,6 @@ cpanm -v -n JSON
 cpanm -v -n JSON::PP
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
-cpanm -v -n Perl::Critic
 cpanm -v -n Redis
 cpanm -v -n Task::Plack
 cpanm -v -n Test::Nginx::Socket
