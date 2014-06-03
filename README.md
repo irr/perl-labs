@@ -10,8 +10,8 @@ perl-labs
 export PERLBREW_ROOT=/opt/perl5
 sudo yum install perlbrew perl-Term-ReadLine-Gnu
 sudo yum groupinstall "Development Tools"
-curl -kL http://install.perlbrew.pl | bash
-# Install
+```
+```shell
 perlbrew init
 perlbrew mirror
 perlbrew available
@@ -35,9 +35,6 @@ patch -p1 < tcp-1.6.0.patch
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module-0.4.5 --add-module=/opt/perl/headers-more-nginx-module-0.25
 make -j4
 make install 
-sudo ln -s /opt/perl/nginx/sbin/nginx /usr/local/bin/nginx
-or
-sudo make install
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 ```
 
