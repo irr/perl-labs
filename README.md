@@ -49,6 +49,7 @@ sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
+cpanm -v -n IO::Socket::SSL
 cpanm -v -n JSON
 cpanm -v -n JSON::PP
 cpanm -v -n Net::Server::SS::PreFork
