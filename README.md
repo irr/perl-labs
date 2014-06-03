@@ -10,7 +10,8 @@ perl-labs
 # Ubuntu and CentOS
 export PERLBREW_ROOT=/opt/perl5
 # CentOS
-sudo yum install perl-ExtUtils-MakeMaker
+sudo yum install perlbrew perl-Term-ReadLine-Gnu
+sudo yum groupinstall "Development Tools"
 curl -kL http://install.perlbrew.pl | bash
 # Ubuntu
 sudo apt-get install perlbrew build-essential
