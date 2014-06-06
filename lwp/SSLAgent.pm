@@ -3,8 +3,9 @@ package SSLAgent;
 use base 'LWP::UserAgent';
 
 sub new {
-    my ($class) = @_;
-    my $self = $class->SUPER::new(ssl_opts => { verify_hostname => 0 });
+    my ($class, %cnf) = @_;
+    $cnf{ssl_opts} = { verify_hostname => 0 };
+    my $self = $class->SUPER::new(%cnf);
     bless $self, $class;
     return $self;
 }
