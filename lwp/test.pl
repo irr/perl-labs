@@ -50,6 +50,9 @@ $req->content(sprintf($data, SECURITY_ZONE, VLAN));
 
 debug($ua, $req);
 
+say "Waiting 5 seconds...";
+sleep 5;
+
 say "Searching for security-zone [", SECURITY_ZONE, "]";
 
 $req = HTTP::Request->new(GET => 'https://esm/api/esm/security-zones');
