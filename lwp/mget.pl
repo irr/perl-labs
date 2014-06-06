@@ -14,11 +14,10 @@ my @threads;
 for my $url ('http://www.google.com/', 'http://www.perl.org/') {
     push @threads, async { 
         my $json = JSON->new->allow_nonref();
-        # my %hash = (url => $url);
-        # my $res = $ua->get($url);
-        # $hash{size} = length($res->content);
-        # $json->encode(\%hash);
-        $json->encode((url => $url));
+        my %hash = (url => $url);
+        my $res = $ua->get($url);
+        $hash{size} = length($res->content);
+        $json->encode(\%hash);
     };
 }
 
