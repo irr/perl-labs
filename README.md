@@ -15,7 +15,7 @@ sudo yum groupinstall "Development Tools"
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.20.0 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles
+perlbrew install perl-5.20.0 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles -Dusemultiplicity
 perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.20.0 and perlbrew switch-off
 perlbrew use perl-5.20.0 and exit or perlbrew off
