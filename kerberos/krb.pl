@@ -42,6 +42,11 @@
 # sudo yum install perl-ExtUtils-Embed perl-Getopt-ArgvFile
 # pp -B -o centos6.5/krb krb.pl
 
+# cpanm -v -n Authen::Krb5::Admin
+
+# kinit host/admin@IRRLAB.COM.BR -k -t /etc/hostadm.keytab
+# ./krb.pl --lst --suser=host/admin --spass=/etc/hostadm.keytab
+
 use 5.010;
 
 use strict;
