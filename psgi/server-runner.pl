@@ -4,11 +4,11 @@
 # ./test -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4
 # curl -s localhost:5000/|python -mjson.tool
 # ./test -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4 --enable-ssl --ssl-cert myirrlab.org.crt --ssl-key myirrlab.org.key
-# curl -s -k localhost:5000/|python -mjson.tool
+# curl -s -k https://localhost:5000/|python -mjson.tool
 
 # start_server --port 127.0.0.1:5000 -- starman --workers 4 server.pl
 # ./server.pl -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4
-# curl -s localhost:5000/|python -mjson.tool
+# curl -s http://localhost:5000/|python -mjson.tool
 
 use Plack::Middleware::AccessLog;
 
