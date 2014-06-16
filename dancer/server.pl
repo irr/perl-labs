@@ -2,7 +2,7 @@
 use Dancer;
 
 # http://www.nntp.perl.org/group/perl.par/2013/12/msg5672.html
-# pp -a "/home/irocha/perl5/perlbrew/perls/perl-5.14.4/lib/site_perl/5.14.4/MIME/types.db;lib/MIME/types.db" -F PatchContent=MIME/Types.pm -M PerlIO::encoding -M Dancer::Logger::Console -M Dancer::Handler::Standalone server.pl
+# # pp -a "/opt/perl5/perls/perl-5.20.0/lib/site_perl/5.20.0/MIME/types.db;lib/MIME/types.db" -F PatchContent=MIME/Types.pm -M PerlIO::encoding -M Dancer::Logger::Console -M Dancer::Handler::Standalone server.pl -o test
 
 # development
 #set environment => 'development';
