@@ -46,6 +46,7 @@ sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel
 ```
 
 ```shell
+cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
@@ -60,6 +61,7 @@ cpanm -v -n Task::Plack
 cpanm -v -n Test::Nginx::Socket
 cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Try::Tiny
+cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
 ```
 
