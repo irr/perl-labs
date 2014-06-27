@@ -20,6 +20,10 @@ perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.20.0 and perlbrew switch-off
 perlbrew use perl-5.20.0 and exit or perlbrew off
 ```
+```shell
+perlbrew use perl-5.20.0
+cd /usr/include; h2ph -r -l . && h2ph asm/*
+```
 
  Get [Nginx]
 ```shell
