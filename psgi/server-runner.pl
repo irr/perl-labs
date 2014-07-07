@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# pp -M Plack::Handler::Standalone -M Plack::Loader -M Plack::Middleware::Lint -M Plack::Middleware::StackTrace -M Plack::Handler::Starman -M IO::Socket::SSL -B -o test server-runner.pl 
+# pp -M Plack::Handler::Standalone -M Plack::Loader -M Plack::Middleware::Lint -M Plack::Middleware::StackTrace -M Plack::Handler::Starman -M IO::Socket::SSL -M Log::Dispatch::Syslog -B -o test server-runner.pl 
 # ./test -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4
 # curl -s localhost:5000/|python -mjson.tool
 # ./test -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4 --enable-ssl --ssl-cert myirrlab.org.crt --ssl-key myirrlab.org.key
