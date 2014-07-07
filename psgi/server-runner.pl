@@ -11,9 +11,21 @@
 # curl -s http://localhost:5000/|python -mjson.tool
 
 use Plack::Middleware::AccessLog;
+use Plack::Middleware::LogDispatch;
 
 use JSON;
+use Log::Dispatch;
 use Scalar::Util qw(reftype);
+
+my $logger = Log::Dispatch->new(
+    outputs => [
+        [
+            'Syslog',
+            min_level => 'info',
+            ident     => 'server (starman)'
+        ]
+    ]
+);
 
 my $app = Plack::Middleware::AccessLog->wrap(sub {
     my $env = shift;
@@ -24,6 +36,8 @@ my $app = Plack::Middleware::AccessLog->wrap(sub {
     my $json = JSON->new->allow_nonref();
     my $body = $json->encode(\%filtered_hash) . "\n";
 
+    $env->{'psgix.logger'}->({ level => "info", message => "$env->{PATH_INFO} called" });
+
     if ($env->{PATH_INFO} eq '/') {
         return [ 200, [ 'Content-Type' => 'application/json' ], [ $body ] ];
     } elsif ($env->{PATH_INFO} eq '/uol.jpg') {
@@ -33,6 +47,8 @@ my $app = Plack::Middleware::AccessLog->wrap(sub {
         return [ 404, [ 'Content-Type' => 'application/json' ], [ $body ] ];
     }
 }, format => "combined");
+
+$app = Plack::Middleware::LogDispatch->wrap($app, logger => $logger);
 
 require Plack::Runner;
 my $runner = Plack::Runner->new;

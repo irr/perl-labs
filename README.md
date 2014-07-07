@@ -57,6 +57,7 @@ cpanm -v -n DBD::mysql
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n JSON
 cpanm -v -n JSON::PP
+cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
