@@ -54,6 +54,7 @@ cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
+cpanm -v -n DBD::SQLite
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
 cpanm -v -n JSON
