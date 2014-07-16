@@ -1,7 +1,13 @@
-# pp -M Text::CSV_XS -M Finance::Quote::Yahoo::Brasil -M Finance::QuoteHist::Yahoo -M Finance::QuoteHist::Google -o fetch fetch.pl
+# pp -M Text::CSV_XS -M Finance::Quote::Yahoo::Brasil -M Finance::QuoteHist::Yahoo -M Finance::QuoteHist::Google -M PDL::NiceSlice::FilterUtilCall -o fetch fetch.pl
+
+use DateTime;
 
 use Finance::Quote;
 use Finance::QuoteHist;
+
+use PDL;
+use PDL::NiceSlice;
+use PDL::Finance::TA ':Func';
 
 my $q = Finance::Quote->new("Yahoo::Brasil");
 $q->timeout(60);
@@ -18,41 +24,26 @@ $q = Finance::QuoteHist->new(
     start_date => '1 month ago', 
     end_date => 'today',);
 
-print "quotes...\n";
+print "\nquotes...\n";
+
+my @quotes = ();
 
 foreach $row ($q->quotes()) { 
-    my ($symbol, $date, $open, $high, $low, $close, $volume) = @$row; 
+    my ($sym, $date, $o, $h, $l, $c, $vol) = @$row;
+    my ($yy, $mm, $dd) = split /\//, $date;
+    my $epoch = DateTime->new(
+                    year => $yy,
+                    month => $mm,
+                    day => $dd,
+                    hour => 16, minute => 0, second => 0,
+                    time_zone => 'America/New_York',
+                 )->epoch;    
+    push @quotes, pdl($epoch, $o, $h, $l, $c);
     print "@$row\n"; 
 }
 
-# name         Company or Mutual Fund Name
-# last         Last Price
-# high         Highest trade today
-# low          Lowest trade today
-# date         Last Trade Date  (MM/DD/YY format)
-# time         Last Trade Time
-# net          Net Change
-# p_change     Percent Change from previous day's close
-# volume       Volume
-# avg_vol      Average Daily Vol
-# bid          Bid
-# ask          Ask
-# close        Previous Close
-# open         Today's Open
-# day_range    Day's Range
-# year_range   52-Week Range
-# eps          Earnings per Share
-# pe           P/E Ratio
-# div_date     Dividend Pay Date
-# div          Dividend per Share
-# div_yield    Dividend Yield
-# cap          Market Capitalization
-# ex_div       Ex-Dividend Date.
-# nav          Net Asset Value
-# yield        Yield (usually 30 day avg)
-# exchange     The exchange the information was obtained from.
-# success      Did the stock successfully return information? (true/false)
-# errormsg     If success is false, this field may contain the reason why.
-# method       The module (as could be passed to fetch) which found this
-#              information.
-# type         The type of equity returned
+my $data = pdl(@quotes)->transpose;
+
+print $data(0:10,(1))."\n";
+
+print $data(0:10,(1))->movavg(5)."\n";
