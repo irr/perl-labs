@@ -1,4 +1,4 @@
-# pp -M Text::CSV_XS -M Finance::Quote::Yahoo::Brasil -M Finance::QuoteHist::Yahoo -M PDL::NiceSlice::FilterUtilCall -o fetch fetch.pl
+# pp -M Text::CSV_XS -M Finance::Quote::Yahoo::Brasil -M Finance::QuoteHist::Yahoo -M Finance::QuoteHist::Google -M PDL::NiceSlice::FilterUtilCall -o fetch fetch.pl
 
 use DateTime;
 
@@ -9,21 +9,21 @@ use PDL;
 use PDL::NiceSlice;
 use PDL::Finance::TA ':Func';
 
-my $q;
+my $p = ($#ARGV < 0) ? "PETR4" : $ARGV[0];
 
-$q = Finance::Quote->new("Yahoo::Brasil");
+my $q = Finance::Quote->new("Yahoo::Brasil");
 $q->timeout(60);
 $q->set_currency("BRL");
  
-my %info = $q->fetch("yahoo_brasil", "PETR4");
+my %info = $q->fetch("yahoo_brasil", $p);
 
 foreach (qw(close open last date time exchange bid volume high low pe p_change name success)) {
-    print "$_: $info{'PETR4', $_}, ";
+    print "$_: $info{$p, $_}, ";
 }
 
 $q = Finance::QuoteHist->new(
-    lineup => "Finance::QuoteHist::Yahoo",
-    symbols => [qw(PETR4.SA)], 
+    lineup => "Finance::QuoteHist::Google",
+    symbols => [$p], 
     start_date => '1 month ago', 
     end_date => 'today',);
 
