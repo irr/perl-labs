@@ -44,6 +44,6 @@ foreach $row ($q->quotes()) {
 
 my $data = pdl(@quotes)->transpose;
 
-print $data(0:10,(1))."\n";
+print $data(0:-1,(1))."\n";
 
-print $data(0:10,(1))->movavg(5)."\n";
+print $data(0:-1,(1))->movavg(7)."\n";
