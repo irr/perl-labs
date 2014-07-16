@@ -15,7 +15,7 @@ $q = Finance::Quote->new("Yahoo::Brasil");
 $q->timeout(60);
 $q->set_currency("BRL");
  
-my %info = $q->fetch("brasil", "PETR4");
+my %info = $q->fetch("yahoo_brasil", "PETR4");
 
 foreach (qw(close open last date time exchange bid volume high low pe p_change name success)) {
     print "$_: $info{'PETR4', $_}, ";
