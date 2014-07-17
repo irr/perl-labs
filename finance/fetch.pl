@@ -59,7 +59,7 @@ print "\nPDL processing quotes (SMA)...\n";
 
 my $data = pdl(@pdlquotes)->transpose;
 
-print $data(0:-1,(1))."\n";
+print $data(0:-1,(1))."\n\n";
 
 print "PDL(SMA): ".$data(0:-1,(1))->movavg(DAYS)."\n";
 
@@ -75,4 +75,4 @@ for (my $i = 0; $i <= $limit; $i++) {
     push @smas, $avg->query;
 }
 
-print "Math::Business(SMA): @smas\n";
+print "MB (SMA): [ @smas]\n";
