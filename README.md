@@ -55,8 +55,6 @@ cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
-cpanm -v -n Finance::Quote
-cpanm -v -n Finance::QuoteHist
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
 cpanm -v -n JSON
@@ -73,6 +71,12 @@ cpanm -v -n Text::CSV_XS
 cpanm -v -n Try::Tiny
 cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
+```
+
+```shell
+cpanm -v -n Finance::Quote
+cpanm -v -n Finance::QuoteHist
+cpanm -v -n Math::Business::SMA
 ```
 
  Get [Software Collections]
