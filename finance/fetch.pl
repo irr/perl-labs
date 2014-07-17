@@ -6,6 +6,9 @@ use Finance::Quote;
 use Finance::QuoteHist;
 
 use Math::Business::SMA;
+use Math::Business::ParabolicSAR;
+use GD::Graph::mixed;
+use List::Util ();
 
 use PDL;
 use PDL::NiceSlice;
@@ -40,6 +43,9 @@ my @quotes = $q->quotes();
 my @pdlquotes = ();
 my @cells = ();
 
+my $sar = Math::Business::ParabolicSAR->recommended;
+my @graphdata;
+
 foreach $row (@quotes) { 
     my ($sym, $date, $o, $h, $l, $c, $vol) = @$row;
     my ($yy, $mm, $dd) = split /\//, $date;
@@ -52,6 +58,16 @@ foreach $row (@quotes) {
                  )->epoch;    
     push @pdlquotes, pdl($epoch, $o, $h, $l, $c);
     push @cells, $o;
+    
+    my $p = [$o, $h, $l, $c];
+    $sar->insert(@p);
+
+    push @{$graphdata[0]}, $dd;     # date
+    push @{$graphdata[1]}, $p->[3]; # close
+    push @{$graphdata[2]}, $p->[1]; # high
+    push @{$graphdata[3]}, $p->[2]; # low
+    push @{$graphdata[4]}, $sar->query;
+
     print "@$row\n"; 
 }
 
@@ -76,3 +92,31 @@ for (my $i = 0; $i <= $limit; $i++) {
 }
 
 print "MB (SMA): [ @smas]\n";
+
+my @all_points = grep {defined $_} map {@$_} @graphdata[1 .. $#graphdata];
+
+my $min_point  = List::Util::min(@all_points);
+my $max_point  = List::Util::max(@all_points);
+
+my $graph = GD::Graph::mixed->new(1000, 500);
+   $graph->set(
+       y_label           => 'dollars',
+       x_label           => 'date',
+       transparent       => 0,
+       markers           => [qw(7 3 9 8)],
+       dclrs             => [qw(black lgreen lred lblue)],
+       y_min_value       => $min_point-0.2,
+       y_max_value       => $max_point+0.2,
+       y_number_format   => '%0.2f',
+       x_labels_vertical => 1,
+       types             => [qw(linespoints points points points)],
+ 
+   ) or die $graph->error;
+ 
+my $gd = $graph->plot(\@graphdata) or die $graph->error;
+open my $img, '>', "/tmp/sar.png" or die $!;
+binmode $img;
+print $img $gd->png;
+close $img;
+
+exec "eog /tmp/sar.png &> /dev/null && rm -rf /tmp/sar.png" ;

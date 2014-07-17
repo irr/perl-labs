@@ -46,7 +46,7 @@ CPAN
 -----------
 
 ```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel
 ```
 
 ```shell
@@ -76,6 +76,7 @@ cpanm -v -n YAML::Tiny
 ```shell
 cpanm -v -n Finance::Quote
 cpanm -v -n Finance::QuoteHist
+cpanm -v -n GD::Graph
 cpanm -v -n Math::Business::SMA
 ```
 
