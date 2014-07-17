@@ -62,10 +62,10 @@ foreach $row (@quotes) {
     my $p = [$o, $h, $l, $c];
     $sar->insert(@p);
 
-    push @{$graphdata[0]}, $dd;     # date
-    push @{$graphdata[1]}, $p->[3]; # close
-    push @{$graphdata[2]}, $p->[1]; # high
-    push @{$graphdata[3]}, $p->[2]; # low
+    push @{$graphdata[0]}, "$dd/$mm";  # date
+    push @{$graphdata[1]}, $p->[3];    # close
+    push @{$graphdata[2]}, $p->[1];    # high
+    push @{$graphdata[3]}, $p->[2];    # low
     push @{$graphdata[4]}, $sar->query;
 
     print "@$row\n"; 
