@@ -84,6 +84,16 @@ sub post {
                 $r->log_error(0, "error [$code] removing user [$params{user}]");
                 return 403;
             }        
+        } elsif (($params{action} eq 'on') or ($params{action} eq 'off')) {
+            my $princ = Authen::Krb5::parse_name($params{user});
+            $princ->attributes(($params{action} eq 'on') ? 0 : KRB5_KDB_DISALLOW_RENEWABLE);
+            if ($kadm5->modify_principal($princ)) {
+                return OK;
+            } else {
+                my $code = Authen::Krb5::Admin::error_code;
+                $r->log_error(0, "error [$code] enabling/disabling user [$params{user} $params{action}]");
+                return 403;
+            }            
         } else {
             return 400;
         }
