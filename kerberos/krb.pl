@@ -45,6 +45,10 @@
 # cpanm -v -n Authen::Krb5::Admin
 
 # kinit host/admin@IRRLAB.COM.BR -k -t /etc/hostadm.keytab
+# modprinc -policy disable_policy host/admin
+# modprinc -clearpolicy  host/admin
+# modprinc +allow_renewable host/admin
+# modprinc -allow_renewable host/admin
 # ./krb.pl --lst --suser=host/admin --spass=/etc/hostadm.keytab
 
 use 5.010;
@@ -66,7 +70,7 @@ Authen::Krb5::init_context;
 
 sub usage {
     print "krb-user-admin, version 0.1e (ivan.ribeiro\@gmail.com)\n";
-    print "krb [--add|--del|--lst] --suser=host/admin --spass=/etc/hostadm.keytab --user=<username> --pass=<password>\n";
+    print "krb [--add|--del|--lst|--on|--off] --suser=host/admin --spass=/etc/hostadm.keytab --user=<username> --pass=<password>\n";
     exit 1;
 }
 
@@ -77,17 +81,19 @@ sub status {
     print "$ret\n";
 }
 
-my ($add, $del, $lst, $user, $pass, $suser, $spass) = ('') x 7;
+my ($add, $del, $lst, $on, $off, $user, $pass, $suser, $spass) = ('') x 9;
 
 GetOptions( "add!" => \$add,
             "del!" => \$del,
             "lst!" => \$lst,
+            "on!" => \$on,
+            "off!" => \$off,
             "user=s" => \$user,
             "pass:s" => \$pass,
             "suser:s" => \$suser, 
             "spass:s" => \$spass );
 
-usage() unless (($suser and $spass) and ($lst or ($del and $user) or ($add and $user and $pass)));
+usage() unless (($suser and $spass) and ($lst or ($del and $user) or ($on and $user) or ($off and $user) or ($add and $user and $pass)));
 
 my $handle = Authen::Krb5::Admin->init_with_skey($suser, $spass);
 
@@ -101,6 +107,26 @@ if ($handle) {
             print "{\"principals\":[]}\n";
         }  
         exit 0;      
+    } elsif ($on and $user) {
+        my $ap = $handle->get_principal(Authen::Krb5::parse_name($user));
+        $ap->attributes(0);
+        if ($handle->modify_principal($ap)) {
+            status($user, 0);
+            exit 0;
+        } else {
+            status($user, Authen::Krb5::Admin::error_code);
+            exit Authen::Krb5::Admin::error_code;   
+        }
+    } elsif ($off and $user) {
+        my $ap = $handle->get_principal(Authen::Krb5::parse_name($user));
+        $ap->attributes(KRB5_KDB_DISALLOW_RENEWABLE);
+        if ($handle->modify_principal($ap)) {
+            status($user, 0);
+            exit 0;
+        } else {
+            status($user, Authen::Krb5::Admin::error_code);
+            exit Authen::Krb5::Admin::error_code;   
+        }
     } elsif ($add and $pass) {
         my $ap = $handle->get_principal(Authen::Krb5::parse_name($user));
         if ($ap) {
