@@ -27,16 +27,10 @@ cd /usr/include; h2ph -r -l . && h2ph asm/*
 
  Get [Nginx]
 ```shell
-wget http://nginx.org/download/nginx-1.7.3.tar.gz
-tar xfva nginx-1.7.3.tar.gz
-wget https://github.com/yaoweibin/nginx_tcp_proxy_module/archive/v0.4.5.tar.gz -O nginx_tcp_proxy_module-0.4.5.tar.gz
-tar xfva nginx_tcp_proxy_module-0.4.5.tar.gz
-wget https://github.com/openresty/headers-more-nginx-module/archive/v0.25.tar.gz -O headers-more-nginx-module-0.25.tar.gz 
-tar xfva headers-more-nginx-module-0.25.tar.gz
-cd nginx-1.7.3
-wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.7.3.patch
-patch -p1 < tcp-1.7.3.patch
-./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx --add-module=/opt/perl/nginx_tcp_proxy_module-0.4.5 --add-module=/opt/perl/headers-more-nginx-module-0.25
+wget http://nginx.org/download/nginx-1.6.0.tar.gz
+tar xfva nginx-1.6.0.tar.gz
+cd nginx-1.6.0
+./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx
 make -j4
 make install 
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
