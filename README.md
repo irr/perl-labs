@@ -40,7 +40,7 @@ CPAN
 -----------
 
 ```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
 ```
 
 ```shell
