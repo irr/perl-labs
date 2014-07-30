@@ -84,8 +84,9 @@ sub post {
             }        
         } elsif (($params{action} eq 'on') or ($params{action} eq 'off')) {
             my $princ = Authen::Krb5::parse_name($params{user});
+            my $ap = $kadm5->get_principal($princ);
             $princ->attributes(($params{action} eq 'on') ? 0 : KRB5_KDB_DISALLOW_RENEWABLE);
-            if ($kadm5->modify_principal($princ)) {
+            if ($kadm5->modify_principal($ap)) {
                 return OK;
             } else {
                 my $code = Authen::Krb5::Admin::error_code;
