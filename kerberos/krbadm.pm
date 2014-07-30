@@ -57,8 +57,6 @@ sub post {
         $params{$r->unescape($k)} = $r->unescape($v);
     }
 
-    $r->send_http_header;
-
     return 400 unless ((length($params{action}) > 0) and (length($params{user}) > 0));
 
     try {
