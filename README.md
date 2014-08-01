@@ -51,6 +51,7 @@ cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
+cpanm -v -n Hash::Ordered
 cpanm -v -n JSON
 cpanm -v -n JSON::PP
 cpanm -v -n Log::Dispatch
