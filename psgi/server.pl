@@ -2,10 +2,14 @@
 
 # start_server --port 127.0.0.1:5000 -- starman --workers 4 server.pl
 # ./server.pl -E production -s Starman -o 0.0.0.0 -p 5000 --workers 4
+# mkdir /tmp/static
+# echo "Test (static) OK" > /tmp/static/test.txt
 # curl -s localhost:5000/|python -mjson.tool
+# curl -v localhost:5000/static/test.txt
 
 use Plack::Middleware::AccessLog;
 use Plack::Middleware::LogDispatch;
+use Plack::Middleware::Static;
 
 use JSON;
 use Log::Dispatch;
@@ -43,6 +47,7 @@ my $app = Plack::Middleware::AccessLog->wrap(sub {
 }, format => "combined");
 
 $app = Plack::Middleware::LogDispatch->wrap($app, logger => $logger);
+$app = Plack::Middleware::Static->wrap($app, path => qr{^/static/}, root => '/tmp/');
 
 unless (caller) {
     require Plack::Runner;
