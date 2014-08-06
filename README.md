@@ -58,7 +58,6 @@ cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
-cpanm -v -n Pod::POM::Web
 cpanm -v -n Redis
 cpanm -v -n Task::Plack
 cpanm -v -n Test::Nginx::Socket
@@ -74,6 +73,11 @@ cpanm -v -n Finance::Quote
 cpanm -v -n Finance::QuoteHist
 cpanm -v -n GD::Graph
 cpanm -v -n Math::Business::SMA
+```
+
+```shell
+cpanm -v -n Pod::POM::Web
+perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
 
  Get [Software Collections]
