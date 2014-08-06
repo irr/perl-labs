@@ -24,7 +24,6 @@ perlbrew use perl-5.20.0 and exit or perlbrew off
 perlbrew use perl-5.20.0
 cd /usr/include; h2ph -r -l . && h2ph asm/*
 ```
-
  Get [Nginx]
 ```shell
 wget http://nginx.org/download/nginx-1.6.0.tar.gz
@@ -42,7 +41,6 @@ CPAN
 ```shell
 sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
 ```
-
 ```shell
 cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
@@ -67,19 +65,16 @@ cpanm -v -n Try::Tiny
 cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
 ```
-
 ```shell
 cpanm -v -n Finance::Quote
 cpanm -v -n Finance::QuoteHist
 cpanm -v -n GD::Graph
 cpanm -v -n Math::Business::SMA
 ```
-
 ```shell
 cpanm -v -n Pod::POM::Web
 perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
-
  Get [Software Collections]
 ```shell 
 sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
@@ -87,7 +82,6 @@ sudo yum update -y
 sudo yum install --nogpg -y perl516
 scl enable perl516 <script>
 ```
-
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
 * [headers-more-nginx-module]: set, add, and clear arbitrary output headers
 
