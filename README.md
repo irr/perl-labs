@@ -40,6 +40,7 @@ CPAN
 
 ```shell
 sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev libgd-dev libexpat1-dev
 ```
 ```shell
 cpanm -v -n Authen::Krb5::Admin
