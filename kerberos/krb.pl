@@ -13,6 +13,7 @@
 # sudo service krb5-kdc restart
 
 # CentOS
+# sudo vim /etc/krb5.conf
 # sudo vim /var/kerberos/krb5kdc/kdc.conf
 # sudo vim /var/kerberos/krb5kdc/kadm5.acl
 
