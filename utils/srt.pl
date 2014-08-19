@@ -42,4 +42,6 @@ $srt =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
 print $fh_out $srt;
 close($fh_out);
 
-print "Ok!\n";
+system("zenity --info --text=\"$ARGV[0] OK\"");
+
+print "$ARGV[0] Ok!\n";
