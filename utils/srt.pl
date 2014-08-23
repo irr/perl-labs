@@ -42,6 +42,8 @@ $srt =~ s/<.*?i>|<.*?b>|<.*?u>//gi;
 print $fh_out $srt;
 close($fh_out);
 
-system("zenity --info --text=\"$ARGV[0] OK\"");
+my $info = "Encoding: @encoding\nFile: $ARGV[0] [OK]";
 
-print "$ARGV[0] Ok!\n";
+system("zenity --info --text=\"$info\"");
+
+print "$info\n";
