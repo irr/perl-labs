@@ -2,6 +2,7 @@ use strict;
 use warnings;
 
 use Data::Dumper;
+use Scalar::Util 'refaddr';
 
 sub NewTree {
     return { Root => undef, N => 0 };
@@ -76,16 +77,16 @@ sub remove {
         $node->{Right} = &remove($tree, $node->{Right}, $data);
      } else {
         unless ($node->{Left}) {
-            #if ($node == $tree->{Root}) {
-            #    $tree->{Root} = $node->{Right};
-            #}
+            if (refaddr($node) == refaddr($tree->{Root})) {
+                $tree->{Root} = $node->{Right};
+            }
             $tree->{N}--;
             return $node->{Right};
         } 
         unless ($node->{Right}) {
-            #if ($node == $tree->{Root}) {
-            #    $tree->{Root} = $node->{Left};
-            #}
+            if (refaddr($node) == refaddr($tree->{Root})) {
+                $tree->{Root} = $node->{Left};
+            }
             $tree->{N}--;
             return $node->{Left};
         }
@@ -127,4 +128,5 @@ my @v = ("ale", "irr", "luma", "lara", "babi");
 my $search = &Search($t, "irr");
 print Dumper($search);
 
+&Remove($t, "irr");
 &Dump($t);
