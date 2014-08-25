@@ -76,16 +76,16 @@ sub remove {
         $node->{Right} = &remove($tree, $node->{Right}, $data);
      } else {
         unless ($node->{Left}) {
-            if ($node == $tree->{Root}) {
-                $tree->{Root} = $node->{Right};
-            }
+            #if ($node == $tree->{Root}) {
+            #    $tree->{Root} = $node->{Right};
+            #}
             $tree->{N}--;
             return $node->{Right};
         } 
         unless ($node->{Right}) {
-            if ($node == $tree->{Root}) {
-                $tree->{Root} = $node->{Left};
-            }
+            #if ($node == $tree->{Root}) {
+            #    $tree->{Root} = $node->{Left};
+            #}
             $tree->{N}--;
             return $node->{Left};
         }
