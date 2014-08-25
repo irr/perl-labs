@@ -94,6 +94,7 @@ sub remove {
         $node->{Data} = $p->{Data};
         $node->{Right} = &remove($tree, $node->{Right}, $p->{Data});
      }
+     return $node;
 }
 
 sub Remove {
