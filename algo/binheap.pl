@@ -51,12 +51,16 @@ sub Insert {
 sub Min {
     my $ref = shift;
     my $size = scalar @{$$ref{List}} - 1;
-    if ($size < 2) {
+    if ($size < 1) {
         return undef
     }
     my $r = $$ref{List}->[1];
-    $$ref{List}->[1] = pop(@{$$ref{List}});
-    percDown($ref);
+    if ($size > 1) {
+        $$ref{List}->[1] = pop(@{$$ref{List}});
+        percDown($ref);
+    } else {
+        pop(@{$$ref{List}});
+    }
     return $r;
 }
 
@@ -66,14 +70,15 @@ sub Dump {
 }
 
 my $b = &NewBinHeap();
-for (my $i = 100; $i > 0; $i -= 10) {
+for (my $i = 50; $i > 0; $i -= 10) {
     &Insert($b, $i);
 }
 
 &Dump($b);
 
-for (my $i = 1; $i < 4; $i++) {
-    print &Min($b)."\n";
+for (my $i = 1; $i < 8; $i++) {
+    my $min = &Min($b);
+    print "$min\n" if $min;
 }
 
 &Dump($b);
