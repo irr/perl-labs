@@ -101,14 +101,34 @@ sub Remove {
     return &remove($tree, $tree->{Root}, $data);
 }
 
-sub dumpTree {
+sub dumpTreePreOrder {
     my $node = shift;
     unless ($node) {
         return
     }
-    &dumpTree($node->{Left});
     print "\t$node->{Data}\n";
-    &dumpTree($node->{Right});
+    &dumpTreePreOrder($node->{Left});
+    &dumpTreePreOrder($node->{Right});
+}
+
+sub dumpTreeInOrder {
+    my $node = shift;
+    unless ($node) {
+        return
+    }
+    &dumpTreeInOrder($node->{Left});
+    print "\t$node->{Data}\n";
+    &dumpTreeInOrder($node->{Right});
+}
+
+sub dumpTreePostOrder {
+    my $node = shift;
+    unless ($node) {
+        return
+    }
+    &dumpTreePostOrder($node->{Left});
+    &dumpTreePostOrder($node->{Right});
+    print "\t$node->{Data}\n";
 }
 
 sub Dump {
@@ -117,7 +137,12 @@ sub Dump {
         print "<empty>\n";
     }
     print "Tree: $tree->{N}\n";
-    dumpTree($tree->{Root});
+    print "PreOrder:\n";
+    &dumpTreePreOrder($tree->{Root});
+    print "InOrder:\n";
+    &dumpTreeInOrder($tree->{Root});
+    print "PostOrder:\n";
+    &dumpTreePostOrder($tree->{Root});
 }
 
 my $t = &NewTree();
