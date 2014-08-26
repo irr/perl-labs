@@ -1,8 +1,6 @@
 use strict;
 use warnings;
 
-use 5.014;
-
 use threads;
 
 use LWP::UserAgent;
@@ -21,7 +19,13 @@ for my $url ('http://www.google.com/', 'http://www.perl.org/') {
     };
 }
 
+my $json = JSON->new->allow_nonref();
+my $data = [];
+
 for my $thread (@threads) {
-    my $data = $thread->join;
-    say $data;
+    push @$data, $json->decode($thread->join);
+}
+
+foreach my $h (@$data) {
+    print "URL: $h->{url} has $h->{size} byte(s)\n";
 }
