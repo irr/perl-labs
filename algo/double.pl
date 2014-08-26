@@ -19,7 +19,7 @@ sub Remove {
         ${$$ref{Last}}{Next} = undef;
     } else {
         my ($after, $before) = ($$node{Next}, $$node{Prev});
-        $$after{Prev}, $$before{Next} = $before, $after;
+        ($$after{Prev}, $$before{Next}) = ($before, $after);
     }
     $$ref{N}--;
     return $$node{Data};
