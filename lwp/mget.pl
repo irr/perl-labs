@@ -23,5 +23,5 @@ for my $url ('http://www.google.com/', 'http://www.perl.org/') {
 
 for my $thread (@threads) {
     my $data = $thread->join;
-    say sort $data;
+    say $data;
 }
