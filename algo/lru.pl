@@ -1,8 +1,6 @@
 use strict;
 use warnings;
 
-use Data::Dumper;
-
 sub NewList {
     return { N => 0, First => undef, Last => undef };
 }
@@ -77,7 +75,7 @@ sub Pop {
 
 sub Dump {
     my $ref = shift;
-    print "LRU: $$ref{N}\nLink:\n";
+    print "LRU: $$ref{N}\nLink Data:\n";
     my ($i, $p) = (1, $$ref{Link}->{First});
     while ($p) {
         print sprintf("\t%02d: %s\n", $i, $$p{Data});
@@ -85,8 +83,11 @@ sub Dump {
         $i++;
     }
     print "\t<empty>\n" if $i == 1;
-    print "Hash:\n";
-    print Dumper(keys %{$$ref{Hash}});
+    print "Hash Keys:\n\t";
+    foreach (keys %{$$ref{Hash}}) {
+        print "$_ ";
+    }
+    print "\n";
 }
 
 sub NewLRU {
@@ -98,7 +99,6 @@ sub Add {
     my ($ref, $k) = @_;
     if ($$ref{N} == $$ref{Link}->{N}) {
         my $id = Shift($$ref{Link});
-        print "removing $id from linked list (limit reached)\n";
         delete $$ref{Hash}->{$id};
     }
     &Delete($ref, $k);
