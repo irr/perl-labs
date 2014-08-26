@@ -17,11 +17,11 @@ for my $url ('http://www.google.com/', 'http://www.perl.org/') {
         my %hash = (url => $url);
         my $res = $ua->get($url);
         $hash{size} = length($res->content);
-        $json->encode(\%hash);
+        return $json->encode(\%hash);
     };
 }
 
 for my $thread (@threads) {
-    my @data = $thread->join;
-    say sort @data;
+    my $data = $thread->join;
+    say sort $data;
 }
