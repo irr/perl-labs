@@ -92,11 +92,7 @@ for (my $i = 1; $i < 10; $i++) {
 }
 Dump($l);
 
-print Remove($l, ${$l}{Last}), "\n";
-Dump($l);
-
-print Shift($l), "\n";
-Dump($l);
-
-print Pop($l), "\n";
+for (my $i = 1; $i < 10; $i++) {
+    Pop($l);
+}
 Dump($l);
