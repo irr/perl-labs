@@ -99,6 +99,7 @@ sub Add {
     my ($ref, $k) = @_;
     if ($$ref{N} == $$ref{Link}->{N}) {
         my $id = Shift($$ref{Link});
+        $$ref{Hash}->{$id}->{Node} = undef;
         delete $$ref{Hash}->{$id};
     }
     &Delete($ref, $k);
@@ -111,6 +112,7 @@ sub Delete {
     my $data = $$ref{Hash}->{$k};
     if ($data) {
         &Remove($$ref{Link}, $data->{Node});
+        $$ref{Hash}->{$k}->{Node} = undef;
         delete $$ref{Hash}, $k;
     }
 }
