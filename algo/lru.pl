@@ -1,37 +1,31 @@
 use strict;
 use warnings;
 
-sub NewList {
+sub newList {
     return { N => 0, First => undef, Last => undef };
 }
 
-sub Remove {
+sub removeLink {
     my ($ref, $node) = @_;
-    return undef unless ($ref and $node);
     if ($node == $$ref{First} and $node == $$ref{Last}) {
         $$ref{First} = undef;
         $$ref{Last} = undef;
     } elsif ($node == $$ref{First}) {
         $$ref{First} = $$node{Next};
         ${$$ref{First}}{Prev} = undef;
-        $$node{Prev} = undef;
-        $$node{Next} = undef;
     } elsif ($node == $$ref{Last}) {
         $$ref{Last} = $$node{Prev};
         ${$$ref{Last}}{Next} = undef;
-        $$node{Prev} = undef;
-        $$node{Next} = undef;
     } else {
         my ($after, $before) = ($$node{Next}, $$node{Prev});
         ($$after{Prev}, $$before{Next}) = ($before, $after);
     }
+    $node = {};
     $$ref{N}--;
-    return $$node{Data};
 }
 
-sub Push {
-    my ($ref, $data) = @_;
-    my $node = { Prev => undef, Next => undef, Data => $data };
+sub pushLink {
+    my ($ref, $node) = @_;
     unless (%{$ref}{Last}) {
         $$ref{First} = $node;
         $$ref{Last} = $node;
@@ -43,38 +37,6 @@ sub Push {
     }
     $$ref{N}++;
     return $node;
-}
-
-sub Unshift {
-    my ($ref, $data) = @_;
-    my $node = { Prev => undef, Next => undef, Data => $data };
-    unless (%{$ref}{First}) {
-        $$ref{First} = $node;
-        $$ref{Last} = $node;
-        $$ref{N}++;
-    } else {
-        my $first = $$ref{First};
-        $$first{Prev} = $node;
-        $$node{Next} = $first;
-        $$ref{First} = $node;
-    }
-    return $node;
-}
-
-sub Shift {
-    my $ref = shift;
-    return undef unless $$ref{First};
-    my $data = ${$$ref{First}}{Data};
-    &Remove($ref, $$ref{First});
-    return $data;
-}
-
-sub Pop {
-    my $ref = shift;
-    return undef unless $$ref{Last};
-    my $data = ${$$ref{Last}}{Data};
-    &Remove($ref, $$ref{Last});
-    return $data;
 }
 
 sub Dump {
@@ -96,42 +58,54 @@ sub Dump {
 
 sub NewLRU {
     my $n = shift;
-    return { N => $n, Link => &NewList(), Hash => undef };
+    return { N => $n, Link => &newList(), Hash => undef };
+}
+
+sub delLRU {
+    my ($ref, $k) = @_;
+    if (exists $$ref{Hash}->{$k}) {
+        my $node = $$ref{Hash}->{$k};
+        if ($node) {
+            &removeLink($$ref{Link}, $node);
+            delete $$ref{Hash}{$k};
+        }
+    }
 }
 
 sub Add {
     my ($ref, $k) = @_;
-    if ($$ref{N} == $$ref{Link}->{N}) {
-        my $id = Shift($$ref{Link});
-        &Delete($ref, $id);
-    }
-    &Delete($ref, $k);
-    my $node = &Push($$ref{Link}, $k);
+    &delLRU($ref, $k);
+    my $node = &pushLink($$ref{Link}, { Prev => undef, Next => undef, Data => $k });
     $$ref{Hash}->{$k} = $node;
-}
-
-sub Delete {
-    my ($ref, $k) = @_;
-    my $node = $$ref{Hash}->{$k};
-    if ($node) {
-        &Remove($$ref{Link}, $node);
-        delete $$ref{Hash}{$k};
+    if ($$ref{Link}->{N} > $$ref{N}) {
+        my $id = $$ref{Link}->{First}->{Data};
+        &delLRU($ref, $id);
     }
 }
 
-my $max = 2;
+sub Get {
+    my $ref = shift;
+    if ($$ref{Link}->{Last}) {
+        my $data = $$ref{Link}->{Last}->{Data};
+        &delLRU($ref, $data);
+        return $data;
+    }
+    return undef;
+}
+
+my $max = 5;
 my $l = &NewLRU($max);
 
-for (my $i = 0; $i < 2; $i++) {
+for (my $i = 0; $i < $max*2; $i++) {
     &Add($l, "Data$i");
 }
 &Dump($l);
 
-&Add($l, "Data2");
-&Dump($l);
+my $data;
 
-&Delete($l, "Data2");
-&Dump($l);
+do {
+    $data = &Get($l);
+    print "$data\n" if $data;
+} while ($data);
 
-&Delete($l, "Data1");
 &Dump($l);
