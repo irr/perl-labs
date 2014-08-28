@@ -14,9 +14,13 @@ sub Remove {
     } elsif ($node == $$ref{First}) {
         $$ref{First} = $$node{Next};
         ${$$ref{First}}{Prev} = undef;
+        $$node{Prev} = undef;
+        $$node{Next} = undef;
     } elsif ($node == $$ref{Last}) {
         $$ref{Last} = $$node{Prev};
         ${$$ref{Last}}{Next} = undef;
+        $$node{Prev} = undef;
+        $$node{Next} = undef;
     } else {
         my ($after, $before) = ($$node{Next}, $$node{Prev});
         ($$after{Prev}, $$before{Next}) = ($before, $after);
@@ -99,31 +103,37 @@ sub Add {
     my ($ref, $k) = @_;
     if ($$ref{N} == $$ref{Link}->{N}) {
         my $id = Shift($$ref{Link});
-        $$ref{Hash}->{$id}->{Node} = undef;
-        delete $$ref{Hash}->{$id};
+        &Delete($ref, $id);
     }
     &Delete($ref, $k);
     my $node = &Push($$ref{Link}, $k);
-    $$ref{Hash}->{$k} = {Node => $node};
+    $$ref{Hash}->{$k} = $node;
+    $node = undef;
 }
 
 sub Delete {
     my ($ref, $k) = @_;
-    my $data = $$ref{Hash}->{$k};
-    if ($data) {
-        &Remove($$ref{Link}, $data->{Node});
-        $$ref{Hash}->{$k}->{Node} = undef;
-        delete $$ref{Hash}, $k;
+    my $node = $$ref{Hash}->{$k};
+    if ($node) {
+        &Remove($$ref{Link}, $node);
+        delete $$ref{Hash}{$k};
+        $node = undef;
     }
 }
 
-my $max = 5;
+my $max = 2;
 my $l = &NewLRU($max);
 
-for (my $i = 0; $i < $max; $i++) {
+for (my $i = 0; $i < 2; $i++) {
     &Add($l, "Data$i");
 }
 &Dump($l);
 
-&Add($l, "Data5");
+&Add($l, "Data2");
+&Dump($l);
+
+&Delete($l, "Data2");
+&Dump($l);
+
+&Delete($l, "Data1");
 &Dump($l);
