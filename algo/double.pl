@@ -31,13 +31,13 @@ sub Push {
     unless (%{$ref}{Last}) {
         $$ref{First} = $node;
         $$ref{Last} = $node;
-        $$ref{N}++;
     } else {
         my $last = $$ref{Last};
         $$last{Next} = $node;
         $$node{Prev} = $last;
         $$ref{Last} = $node;
     }
+    $$ref{N}++;
     return $node;
 }
 
@@ -47,13 +47,13 @@ sub Unshift {
     unless (%{$ref}{First}) {
         $$ref{First} = $node;
         $$ref{Last} = $node;
-        $$ref{N}++;
     } else {
         my $first = $$ref{First};
         $$first{Prev} = $node;
         $$node{Next} = $first;
         $$ref{First} = $node;
     }
+    $$ref{N}++;
     return $node;
 }
 
