@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 
+use Data::Dumper;
+
 sub newList {
     return { N => 0, First => undef, Last => undef };
 }
@@ -67,7 +69,7 @@ sub delLRU {
         my $node = $$ref{Hash}->{$k};
         if ($node) {
             &removeLink($$ref{Link}, $node);
-            delete $$ref{Hash}{$k};
+            delete $$ref{Hash}->{$k};
         }
     }
 }
@@ -96,16 +98,13 @@ sub Get {
 my $max = 5;
 my $l = &NewLRU($max);
 
-for (my $i = 0; $i < $max*2; $i++) {
+for (my $i = 0; $i < $max*10; $i++) {
     &Add($l, "Data$i");
 }
 &Dump($l);
 
-my $data;
+for (my $i = 0; $i < $max-1; $i++) {
+    print &Get($l)."\n";
+}
 
-do {
-    $data = &Get($l);
-    print "$data\n" if $data;
-} while ($data);
-
-&Dump($l);
+print Dumper($l);
