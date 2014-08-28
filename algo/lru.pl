@@ -108,7 +108,6 @@ sub Add {
     &Delete($ref, $k);
     my $node = &Push($$ref{Link}, $k);
     $$ref{Hash}->{$k} = $node;
-    $node = undef;
 }
 
 sub Delete {
@@ -117,7 +116,6 @@ sub Delete {
     if ($node) {
         &Remove($$ref{Link}, $node);
         delete $$ref{Hash}{$k};
-        $node = undef;
     }
 }
 
