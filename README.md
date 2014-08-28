@@ -60,6 +60,7 @@ cpanm -v -n PAR::Packer
 cpanm -v -n Perl::MinimumVersion
 cpanm -v -n Redis
 cpanm -v -n Task::Plack
+cpanm -v -n Test::LeakTrace
 cpanm -v -n Test::Nginx::Socket
 cpanm -v -n Term::ReadLine::Gnu
 cpanm -v -n Text::CSV_XS
