@@ -3,6 +3,8 @@ use warnings;
 
 { 
     package Animal;
+    use Scalar::Util qw(weaken);
+    our %REGISTRY;
     sub sound { "animal!" }
     sub speak {
         my $self = shift;
@@ -17,10 +19,20 @@ use warnings;
         my $name = shift;
         my $self = { Name => $name };
         bless $self, $class;
+        $REGISTRY{$self} = $self;
+        weaken($REGISTRY{$self});
+        $self;
     }
     sub DESTROY {
         my $self = shift;
         print 'object [', $self->name, "] has been released.\n";
+    }
+    sub registered {
+        print "Dumping REGISTRY...\n";
+        for (keys %REGISTRY) {
+            my $obj = $REGISTRY{$_};
+            print "REGISTRY[".$_."]=".$obj->name."\n" if ref($obj);
+        }
     }
 }
 
@@ -66,10 +78,12 @@ my $barn = Barn->new;
 $barn->add(Dog->new('Babi'));
 $barn->add(Dog->new('Luma'));
 print "Burn the barn:\n";
+Animal::registered();
 for ($barn->contents) {
     print $_,":",$_->name."\n";
 }
 $barn = undef;
 print "End of program.\n";
+Animal::registered();
 
 
