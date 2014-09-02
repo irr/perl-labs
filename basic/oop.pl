@@ -3,6 +3,13 @@ use warnings;
 
 use Pry;
 
+sub who_am_i {
+    local *glob = shift;
+
+    print "I'm from package " . *glob{PACKAGE}."\n";
+    print "My name is "       . *glob{NAME}."\n";
+}
+
 { 
     package Animal;
     use Scalar::Util qw(weaken);
@@ -72,6 +79,14 @@ use Pry;
     use Class::MethodMaker
         get_set => [-eiffel => [qw(age)]],
     ;
+    foreach my $entry ( keys %Animal:: ) {
+        no strict 'refs';
+        print "I'm from package " . *{$entry}{PACKAGE}."\n";
+        print "My name is " . *{$entry}{NAME}."\n";
+        print "Animal's entry: $entry array is defined\n" if *{$entry}{ARRAY};
+        print "Animal's entry: $entry hash is defined\n" if *{$entry}{HASH};
+        print "Animal's entry: $entry sub is defined\n" if *{$entry}{CODE};
+    }
 }
 
 {
