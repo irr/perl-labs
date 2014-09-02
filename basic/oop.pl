@@ -75,8 +75,16 @@ use Pry;
 }
 
 {
+    package Friend;
+    sub hug { 
+        my $self = shift;
+        my $what = shift;
+        print "hugging and squezzing $what...\n";
+    }
+}
+{
     package Dog;
-    use base qw(Animal);
+    use base qw(Animal Friend);
     sub sound { "bark" }
     sub speak {
         my $self = shift;
@@ -111,6 +119,8 @@ print "Lara color is: ".$lara->color."\n";
 print "Lara's age is: ".$lara->age."\n";
 
 Pry::pry;
+
+$lara->hug("me");
 
 { 
     package Barn;
