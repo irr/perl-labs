@@ -69,6 +69,10 @@ use Pry;
            }
         }
     }
+    use Class::MethodMaker
+        new_with_init => 'new',
+        get_set => [-eiffel => [qw(age)]],
+    ;
 }
 
 {
@@ -103,7 +107,9 @@ $res->($lara) if $res;
 
 $lara->eat("beef");
 $lara->set_color("black");
+$lara->set_age(11);
 print "Lara color is: ".$lara->color."\n";
+print "Lara's age is: ".$lara->age."\n";
 
 Pry::pry;
 
