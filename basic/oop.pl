@@ -19,7 +19,7 @@ use Pry;
     sub new {
         my $class = shift;
         my $name = shift;
-        my $self = { Name => $name };
+        my $self = { Name => $name, Color => "brown" };
         bless $self, $class;
         $REGISTRY{$self} = $self;
         weaken($REGISTRY{$self});
@@ -39,7 +39,6 @@ use Pry;
     sub AUTOLOAD {
         our $AUTOLOAD;
         (my $method = $AUTOLOAD) =~ s/.*:://s;
-        Pry::pry;
         if ($method eq "eat") {
             ## define eat:
             eval q{
@@ -51,6 +50,23 @@ use Pry;
             };
             die $@ if $@;
             goto &eat;
+        } else {
+            my @elements = qw(color age weight height);
+            if ($AUTOLOAD =~ /::(\w+)$/ and grep $1 eq $_, @elements) {
+                my $field = ucfirst $1;
+                {
+                    no strict 'refs';
+                    *{$AUTOLOAD} = sub { $_[0]->{$field} };
+                }
+                goto &{$AUTOLOAD};
+            } elsif ($AUTOLOAD =~ /::set_(\w+)$/ and grep $1 eq $_, @elements) {
+                my $field = ucfirst $1;
+                {
+                    no strict 'refs';
+                    *{$AUTOLOAD} = sub { $_[0]->{$field} = $_[1] };
+                }
+                goto &{$AUTOLOAD};
+           }
         }
     }
 }
@@ -86,6 +102,10 @@ print "Testing Lara speaking...\n" if $res;
 $res->($lara) if $res;
 
 $lara->eat("beef");
+$lara->set_color("black");
+print "Lara color is: ".$lara->color."\n";
+
+Pry::pry;
 
 { 
     package Barn;
