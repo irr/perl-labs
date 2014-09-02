@@ -70,7 +70,6 @@ use Pry;
         }
     }
     use Class::MethodMaker
-        new_with_init => 'new',
         get_set => [-eiffel => [qw(age)]],
     ;
 }
