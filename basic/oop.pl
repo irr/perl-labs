@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 
+use Pry;
+
 { 
     package Animal;
     use Scalar::Util qw(weaken);
@@ -34,6 +36,22 @@ use warnings;
             print "REGISTRY[".$_."]=".$obj->name."\n" if ref($obj);
         }
     }
+    sub AUTOLOAD {
+        our $AUTOLOAD;
+        (my $method = $AUTOLOAD) =~ s/.*:://s;
+        Pry::pry;
+        if ($method eq "eat") {
+            ## define eat:
+            eval q{
+                sub eat {
+                    my $self = shift;
+                    print $self->name, " starts eating [$AUTOLOAD]...\n";                    
+                }
+            };
+            die $@ if $@;
+            goto &eat;
+        }
+    }
 }
 
 {
@@ -65,6 +83,8 @@ print "Lara can speak [".$lara->can('speak')."] but she can't talk [".$lara->can
 my $res = $lara->can('speak');
 print "Testing Lara speaking...\n" if $res;
 $res->($lara) if $res;
+
+$lara->eat();
 
 { 
     package Barn;
