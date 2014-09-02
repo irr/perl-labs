@@ -45,7 +45,8 @@ use Pry;
             eval q{
                 sub eat {
                     my $self = shift;
-                    print $self->name, " starts eating [$AUTOLOAD]...\n";                    
+                    my $food = shift;
+                    print $self->name, " starts eating $food [$AUTOLOAD]...\n";                    
                 }
             };
             die $@ if $@;
@@ -84,7 +85,7 @@ my $res = $lara->can('speak');
 print "Testing Lara speaking...\n" if $res;
 $res->($lara) if $res;
 
-$lara->eat();
+$lara->eat("beef");
 
 { 
     package Barn;
