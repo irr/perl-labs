@@ -59,6 +59,13 @@ Dog::speak($lara, "argument 1"); # same as $lara->speak();
 # unnamed (like class methods)
 Dog->speak("arguments...");
 
+print "Lara is an animal [".$lara->isa('Animal')."] and she is a dog [".$lara->isa('Dog')."]\n";
+print "Lara can speak [".$lara->can('speak')."] but she can't talk [".$lara->can('talk')."]\n";
+
+my $res = $lara->can('speak');
+print "Testing Lara speaking...\n" if $res;
+$res->($lara) if $res;
+
 { 
     package Barn;
     sub new { bless [ ], shift }
