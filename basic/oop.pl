@@ -82,6 +82,7 @@ use Pry;
         print "hugging and squezzing $what...\n";
     }
 }
+
 {
     package Dog;
     use base qw(Animal Friend);
