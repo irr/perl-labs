@@ -58,7 +58,9 @@ cpanm -v -n LWP::Protocol::https
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
 cpanm -v -n Perl::MinimumVersion
+cpanm -v -n Pry
 cpanm -v -n Redis
+cpanm -v -n Reply
 cpanm -v -n Task::Plack
 cpanm -v -n Test::LeakTrace
 cpanm -v -n Test::Nginx::Socket
