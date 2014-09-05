@@ -28,6 +28,7 @@ sub number_of_stickers {
     my $letters = {}; 
     my $max = 0;
     $letters->{$_}++ foreach (split //, $word);
+    delete $letters->{" "};
     foreach (keys %$letters) {
         my $n = $letters->{$_} / $counters->{$_};
         if ($n > $max) {
@@ -42,9 +43,11 @@ $counters->{$_}++ foreach (split //, $sticker);
 open(my $fh, "<", "test.data");
 while (<$fh>) {
     chomp(my $line = $_);
-    if ($line =~ /(\w+)\|(\w+)$/) {
+    if ($line =~ /(\w+)\|([\w|\s]+)$/g) {
         my ($word, $n) = number_of_stickers($counters, $2);
         say $1,": ",$word, "=", $n;
+    } else {
+        say "invalid line: $line";
     }
 }
 close($fh);
