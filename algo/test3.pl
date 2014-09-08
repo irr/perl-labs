@@ -6,13 +6,9 @@ my $contents = "test test test test1 test1 test1 test2 test2 test2 test2 test3 t
 my @words = (lc($contents) =~ /(\w+)/g);
 
 my $counters = {};
-my @cwords = ();
 
-foreach my $word (@words) {
-    push @cwords, $word unless exists $counters->{$word};
-    $counters->{$word}++;
-}
+$counters->{$_}++ foreach (@words);
 
-my @toplist = reverse sort { $counters->{$a} <=> $counters->{$b} } @cwords;
+my @toplist = reverse sort { $counters->{$a} <=> $counters->{$b} } (keys $counters);
 
 say join(" ", @toplist);
