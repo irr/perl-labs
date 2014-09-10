@@ -32,16 +32,11 @@ use feature qw(say);
     }
 }
 
-sub dump {
-    my $obj = shift;
-    $obj->string();
-}
-
 my $t = new Test(id => "irr", name => "Ivan", money => 60000);
-&dump($t);
+$t->string();
 
 $t->id("irr2");
-&dump($t);
+$t->string();
 
 
 
