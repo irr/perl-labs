@@ -2,7 +2,6 @@ use feature qw(say);
 
 {
     package Test;
-    use feature qw(say);
 
     our @fields = qw(id name money);
 
