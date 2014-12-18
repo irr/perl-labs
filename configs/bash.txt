@@ -1,0 +1,15 @@
+function __perl_ps1 {
+  if ! [ -z ${PERLBREW_PERL+x} ]; then
+     echo "{${PERLBREW_PERL:5:4}}";
+  fi
+}
+
+alias pb='perlbrew use perl-5.20.0'
+alias pdb='perl -e 42 -d'
+alias pbdoc='perl -MPod::POM::Web -e "Pod::POM::Web->server"'
+
+export PERLBREW_ROOT=/opt/perl5
+source /opt/perl5/etc/bashrc
+
+export PS1='[\u@\h \W$(__git_ps1 " (%s)")$(__perl_ps1)]\$ '
+
