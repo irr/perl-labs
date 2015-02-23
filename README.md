@@ -7,28 +7,33 @@ perl-labs
 
  Get [Perlbrew]
 ```shell
+sudo mkdir -p /opt/perl5
+sudo chown irocha: /opt/perl5
 export PERLBREW_ROOT=/opt/perl5
 sudo yum install perlbrew perl-Term-ReadLine-Gnu
 sudo yum groupinstall "Development Tools"
 ```
+
 ```shell
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.20.0 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles -Dusemymalloc=no
+perlbrew install perl-5.20.2 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles -Dusemymalloc=no
 perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.20.0 and perlbrew switch-off
-perlbrew use perl-5.20.0 and exit or perlbrew off
+perlbrew switch perl-5.20.2 and perlbrew switch-off
+perlbrew use perl-5.20.2 and exit or perlbrew off
 ```
+
 ```shell
-perlbrew use perl-5.20.0
+perlbrew use perl-5.20.2
 cd /usr/include; h2ph -r -l . && h2ph asm/*
 ```
+
  Get [Nginx]
 ```shell
-wget http://nginx.org/download/nginx-1.6.0.tar.gz
-tar xfva nginx-1.6.0.tar.gz
-cd nginx-1.6.0
+wget http://nginx.org/download/nginx-1.7.10.tar.gz
+tar xfva nginx-1.7.10.tar.gz
+cd nginx-1.7.10
 ./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx
 make -j4
 make install 
