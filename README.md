@@ -39,6 +39,7 @@ patch -p1 < /opt/lua/nginx_tcp_proxy_module/tcp-1.7.10.patch
 make -j4
 make install 
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
+curl -v http://localhost:8888/ -d "name=ivan&other=ale&value=100";echo
 ```
 
 CPAN
