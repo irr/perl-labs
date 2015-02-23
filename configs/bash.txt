@@ -4,7 +4,7 @@ function __perl_ps1 {
   fi
 }
 
-alias pb='perlbrew use perl-5.20.0'
+alias pb='perlbrew use perl-5.20.2'
 alias pdb='perl -e 42 -d'
 alias pbdoc='perl -MPod::POM::Web -e "Pod::POM::Web->server"'
 
