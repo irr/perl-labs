@@ -50,6 +50,9 @@ sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev libgd-dev libexpat1-dev
 ```
 ```shell
+sudo pacman -S perl-crypt-cbc perl-dbd-mysql perl-dbd-sqlite perl-io-socket-ssl perl-ipc-system-simple perl-tie-hash-indexed perl-lwp-protocol-https perl-term-readline-gnu perl-try-tiny perl-yaml-tiny perl-test-leaktrace perl-log-log4perl
+```
+```shell
 cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
