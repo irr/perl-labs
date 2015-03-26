@@ -35,12 +35,6 @@ cd /usr/include; h2ph -r -l . && h2ph asm/*
  Get [Nginx]
 ```shell
 cd /opt/perl
-git clone https://github.com/openresty/test-nginx.git
-cd test-nginx
-perl Makefile.PL
-make
-sudo make install
-cd ..
 git clone git@github.com:irr/nginx_tcp_proxy_module.git
 cd nginx_tcp_proxy_module
 git remote add upstream https://github.com/yaoweibin/nginx_tcp_proxy_module.git
@@ -55,8 +49,6 @@ make -j4
 make install 
 cd /usr/sbin
 sudo ln -s /opt/perl/nginx/sbin/nginx
-cd ~/git
-ln -s /opt/perl/test-nginx
 cd ~/gitf
 ln -s /opt/perl/nginx_tcp_proxy_module 
 cd
