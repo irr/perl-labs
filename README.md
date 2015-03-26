@@ -10,7 +10,10 @@ perl-labs
 sudo mkdir -p /opt/perl5
 sudo chown irocha: /opt/perl5
 export PERLBREW_ROOT=/opt/perl5
-sudo yum install perlbrew perl-Term-ReadLine-Gnu
+sudo yum install perlbrew perl-Term-ReadLine-Gnu \
+                 perl-CPAN perl-Text-Diff perl-Test-LongString \
+                 perl-List-MoreUtils perl-Test-Base \
+                 perl-IO-Socket-SSL perl-Time-HiRes
 sudo yum groupinstall "Development Tools"
 ```
 
@@ -32,13 +35,31 @@ cd /usr/include; h2ph -r -l . && h2ph asm/*
  Get [Nginx]
 ```shell
 cd /opt/perl
+git clone https://github.com/openresty/test-nginx.git
+cd test-nginx
+perl Makefile.PL
+make
+sudo make install
+cd ..
+git clone git@github.com:irr/nginx_tcp_proxy_module.git
+cd nginx_tcp_proxy_module
+git remote add upstream https://github.com/yaoweibin/nginx_tcp_proxy_module.git
+git fetch upstream && git merge upstream/master && git push
+cd ..
 wget http://nginx.org/download/nginx-1.7.10.tar.gz
 tar xfva nginx-1.7.10.tar.gz
 cd nginx-1.7.10
-patch -p1 < /opt/lua/nginx_tcp_proxy_module/tcp-1.7.10.patch
+patch -p1 < /opt/perl/nginx_tcp_proxy_module/tcp-1.7.10.patch
 ./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/lua/nginx_tcp_proxy_module/nginx_tcp_proxy_module --prefix=/opt/perl/nginx
 make -j4
 make install 
+cd /usr/sbin
+sudo ln -s /opt/perl/nginx/sbin/nginx
+cd ~/git
+ln -s /opt/perl/test-nginx
+cd ~/gitf
+ln -s /opt/perl/nginx_tcp_proxy_module 
+cd
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 curl -v http://localhost:8888/ -d "name=ivan&other=ale&value=100";echo
 ```
