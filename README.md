@@ -31,12 +31,18 @@ cd /usr/include; h2ph -r -l . && h2ph asm/*
 
  Get [Nginx]
 ```shell
+cd /opt/perl
+git clone git@github.com:irr/nginx_tcp_proxy_module.git
+cd nginx_tcp_proxy_module
+git remote add upstream https://github.com/yaoweibin/nginx_tcp_proxy_module.git
+git fetch upstream && git merge upstream/master && git push
+cd ..
 wget http://nginx.org/download/nginx-1.7.10.tar.gz
 tar xfva nginx-1.7.10.tar.gz
 cd nginx-1.7.10
-wget https://github.com/irr/nginx_tcp_proxy_module/raw/master/tcp-1.7.10.patch
+cp ../nginx_tcp_proxy_module/tcp-1.7.10.patch .
 patch -p1 < tcp-1.7.10.patch
-./configure --with-http_perl_module --with-http_ssl_module --prefix=/opt/perl/nginx
+./configure --with-http_perl_module --with-http_ssl_module --add-module=../nginx_tcp_proxy_module --prefix=/opt/perl/nginx
 make -j4
 make install 
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
