@@ -40,11 +40,11 @@ cd nginx_tcp_proxy_module
 git remote add upstream https://github.com/yaoweibin/nginx_tcp_proxy_module.git
 git fetch upstream && git merge upstream/master && git push
 cd ..
-wget http://nginx.org/download/nginx-1.7.10.tar.gz
-tar xfva nginx-1.7.10.tar.gz
-cd nginx-1.7.10
-patch -p1 < /opt/perl/nginx_tcp_proxy_module/tcp-1.7.10.patch
-./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/perlnginx_tcp_proxy_module --prefix=/opt/perl/nginx
+wget http://nginx.org/download/nginx-1.8.0.tar.gz
+tar xfva nginx-1.8.0.tar.gz
+cd nginx-1.8.0
+patch -p1 < /opt/perl/nginx_tcp_proxy_module/tcp-1.8.0.patch
+./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/perl/nginx_tcp_proxy_module --prefix=/opt/perl/nginx
 make -j4
 make install
 cd /usr/sbin
