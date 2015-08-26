@@ -21,14 +21,14 @@ sudo yum groupinstall "Development Tools"
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.20.2 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles -Dusemymalloc=no
+perlbrew install perl-5.22.0 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles -Dusemymalloc=no
 perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.20.2 and perlbrew switch-off
-perlbrew use perl-5.20.2 and exit or perlbrew off
+perlbrew switch perl-5.22.0 and perlbrew switch-off
+perlbrew use perl-5.22.0 and exit or perlbrew off
 ```
 
 ```shell
-perlbrew use perl-5.20.2
+perlbrew use perl-5.22.0
 cd /usr/include; h2ph -r -l . && h2ph asm/*
 ```
 
@@ -46,11 +46,11 @@ cd nginx-1.7.10
 patch -p1 < /opt/perl/nginx_tcp_proxy_module/tcp-1.7.10.patch
 ./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/perlnginx_tcp_proxy_module --prefix=/opt/perl/nginx
 make -j4
-make install 
+make install
 cd /usr/sbin
 sudo ln -s /opt/perl/nginx/sbin/nginx
 cd ~/gitf
-ln -s /opt/perl/nginx_tcp_proxy_module 
+ln -s /opt/perl/nginx_tcp_proxy_module
 cd
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 curl -v http://localhost:8888/ -d "name=ivan&other=ale&value=100";echo
@@ -106,7 +106,7 @@ cpanm -v -n Pod::POM::Web
 perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
  Get [Software Collections]
-```shell 
+```shell
 sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
 sudo yum update -y
 sudo yum install --nogpg -y perl516
