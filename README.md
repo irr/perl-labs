@@ -19,7 +19,8 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      libtest-base-perl \
                      liblwp-useragent-determined-perl \
                      build-essential eclipse git meld vim-gtk vim
-# http://www.epic-ide.org/updates/testing 
+# http://www.epic-ide.org/updates/testing
+# http://download.eclipse.org/egit/updates
 ```
 
 ```shell
