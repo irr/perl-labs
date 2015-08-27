@@ -10,11 +10,16 @@ perl-labs
 sudo mkdir -p /opt/perl5
 sudo chown irocha: /opt/perl5
 export PERLBREW_ROOT=/opt/perl5
-sudo yum install perlbrew perl-Term-ReadLine-Gnu \
-                 perl-CPAN perl-Text-Diff perl-Test-LongString \
-                 perl-List-MoreUtils perl-Test-Base \
-                 perl-IO-Socket-SSL perl-Time-HiRes
-sudo yum groupinstall "Development Tools"
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
+                     libreadline-dev libsqlite3-dev libpcap-dev \
+                     libmysqlclient-dev libgd-dev libexpat1-dev \
+                     cpanminus libtext-diff-perl \
+                     libtest-longstring-perl \
+                     liblist-moreutils-perl \
+                     libtest-base-perl \
+                     liblwp-useragent-determined-perl \
+                     build-essential eclipse git meld vim-gtk vim
+# http://www.epic-ide.org/updates/testing 
 ```
 
 ```shell
