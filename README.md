@@ -108,13 +108,6 @@ cpanm -v -n Math::Business::SMA
 cpanm -v -n Pod::POM::Web
 perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
- Get [Software Collections]
-```shell
-sudo yum install https://www.softwarecollections.org/en/scls/rhscl/perl516/epel-6-x86_64/download/rhscl-perl516-epel-6-x86_64-1-1.noarch.rpm
-sudo yum update -y
-sudo yum install --nogpg -y perl516
-scl enable perl516 <script>
-```
 * [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
 * [headers-more-nginx-module]: set, add, and clear arbitrary output headers
 
