@@ -60,16 +60,16 @@ CPAN
 -----------
 
 ```shell
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev libgd-dev libexpat1-dev
-```
-```shell
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
 sudo pacman -S perl-crypt-cbc perl-dbd-mysql perl-dbd-sqlite perl-io-socket-ssl perl-ipc-system-simple perl-tie-hash-indexed perl-lwp-protocol-https perl-term-readline-gnu perl-try-tiny perl-yaml-tiny perl-test-leaktrace perl-log-log4perl
 ```
 ```shell
+cpanm -v -n App::FatPacker
 cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
+cpanm -v -n Dancer2
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
 cpanm -v -n IO::Socket::SSL
@@ -94,14 +94,12 @@ cpanm -v -n Tie::File
 cpanm -v -n Try::Tiny
 cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
-```
-```shell
+# Finance
 cpanm -v -n Finance::Quote
 cpanm -v -n Finance::QuoteHist
 cpanm -v -n GD::Graph
 cpanm -v -n Math::Business::SMA
-```
-```shell
+# Docs
 cpanm -v -n Pod::POM::Web
 perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
