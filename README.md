@@ -79,6 +79,8 @@ cpanm -v -n Crypt::Rijndael
 cpanm -v -n Dancer2
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
+cpanm -v -n Geo::Hash::XS
+cpanm -v -n Geohash
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
 cpanm -v -n Hash::Ordered
