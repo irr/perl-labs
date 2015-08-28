@@ -21,6 +21,7 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      build-essential eclipse git meld vim-gtk vim
 # http://www.epic-ide.org/updates/testing
 # http://download.eclipse.org/egit/updates
+# https://marketplace.eclipse.org/content/eclipse-moonrise-ui-theme
 ```
 
 ```shell
