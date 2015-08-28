@@ -28,7 +28,12 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.22.0 -Dusethreads -Dcccdlflags=-fPIC -Duseshrplib -Duse64bitall -Duselargefiles -Dusemymalloc=no
+perlbrew install perl-5.22.0 -Dusethreads \
+                             -Dcccdlflags=-fPIC \
+                             -Duseshrplib \
+                             -Duselargefiles
+                             -Dusemymalloc=no \
+                             -Duse64bitall
 perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.22.0 and perlbrew switch-off
 perlbrew use perl-5.22.0 and exit or perlbrew off
@@ -51,7 +56,10 @@ wget http://nginx.org/download/nginx-1.8.0.tar.gz
 tar xfva nginx-1.8.0.tar.gz
 cd nginx-1.8.0
 patch -p1 < /opt/perl/nginx_tcp_proxy_module/tcp-1.8.0.patch
-./configure --with-http_perl_module --with-http_ssl_module --add-module=/opt/perl/nginx_tcp_proxy_module --prefix=/opt/perl/nginx
+./configure --with-http_perl_module \
+            --with-http_ssl_module \
+            --prefix=/opt/perl/nginx \
+            --add-module=/opt/perl/nginx_tcp_proxy_module
 make -j4
 make install
 cd /usr/sbin
@@ -67,10 +75,21 @@ CPAN
 -----------
 
 ```shell
-sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev libsqlite3-dev libpcap-dev libmysqlclient-dev libgd-dev libexpat1-dev
-sudo yum install pcre-devel zlib-devel openssl-devel readline-devel sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
-sudo pacman -S perl-crypt-cbc perl-dbd-mysql perl-dbd-sqlite perl-io-socket-ssl perl-ipc-system-simple perl-tie-hash-indexed perl-lwp-protocol-https perl-term-readline-gnu perl-try-tiny perl-yaml-tiny perl-test-leaktrace perl-log-log4perl
+sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev libreadline-dev \
+                     libsqlite3-dev libpcap-dev libmysqlclient-dev \
+                     libgd-dev libexpat1-dev
+
+sudo yum install pcre-devel zlib-devel openssl-devel readline-devel \
+                 sqlite-devel libpcap-devel mysql-devel gd-devel expat-devel
+
+sudo pacman -S perl-crypt-cbc perl-dbd-mysql perl-dbd-sqlite \
+               perl-io-socket-ssl perl-ipc-system-simple \
+               perl-tie-hash-indexed perl-lwp-protocol-https \
+               perl-term-readline-gnu perl-try-tiny \
+               perl-yaml-tiny perl-test-leaktrace \
+               perl-log-log4perl
 ```
+
 ```shell
 cpanm -v -n App::FatPacker
 cpanm -v -n Authen::Krb5::Admin
@@ -115,7 +134,7 @@ perl -MPod::POM::Web -e "Pod::POM::Web->server"
 Extras
 -----------
 
-* [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx, with health check and status monitor
+* [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx
 * [headers-more-nginx-module]: set, add, and clear arbitrary output headers
 
 Copyright and License
