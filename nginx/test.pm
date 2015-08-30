@@ -14,11 +14,18 @@ sub handler {
     return OK;
   }
 
+  #$r->sleep(1000, \&next);
+  &next($r);
+
+  return 400;
+}
+
+sub next {
+  my $r = shift;
+
   if ($r->has_request_body(\&post)) {
     return OK;
   }
-
-  return 400;
 }
 
 sub post {
@@ -31,7 +38,7 @@ sub post {
     my($k, $v) = split "=", $_;
     $params{$r->unescape($k)} = $r->unescape($v);
   }
-  
+
   my $json_text;
 
   eval {
@@ -51,9 +58,9 @@ sub post {
   $r->send_http_header("application/json");
   $r->print($json_text);
   $r->flush();
-    
+
   return OK;
 }
- 
+
 1;
 
