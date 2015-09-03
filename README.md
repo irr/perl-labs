@@ -104,12 +104,10 @@ cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
 cpanm -v -n Hash::Ordered
 cpanm -v -n JSON
-cpanm -v -n JSON::PP
 cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
-cpanm -v -n Perl::MinimumVersion
 cpanm -v -n Pry
 cpanm -v -n Redis
 cpanm -v -n Reply
