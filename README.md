@@ -31,7 +31,7 @@ perlbrew available
 perlbrew install perl-5.22.0 -Dusethreads \
                              -Dcccdlflags=-fPIC \
                              -Duseshrplib \
-                             -Duselargefiles
+                             -Duselargefiles \
                              -Dusemymalloc=no \
                              -Duse64bitall
 perlbrew install-cpanm or cpan -i App::cpanminus
