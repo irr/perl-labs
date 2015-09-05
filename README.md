@@ -92,7 +92,6 @@ sudo pacman -S perl-crypt-cbc perl-dbd-mysql perl-dbd-sqlite \
 
 ```shell
 cpanm -v -n App::FatPacker
-cpanm -v -n Authen::Krb5::Admin
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n Dancer2
