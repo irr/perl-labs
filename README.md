@@ -40,6 +40,13 @@ perlbrew use perl-5.22.0 and exit or perlbrew off
 ```
 
 ```shell
+cd /usr/local/bin
+sudo ln -s ~/perl/utils/perlbrew.sh
+sudo ln -s ~/perl/utils/srt.pl srt
+sudo ln -s ~/git/configs/torrents/wg.pl wg
+```
+
+```shell
 perlbrew use perl-5.22.0
 cd /usr/include; h2ph -r -l . && h2ph asm/*
 ```
