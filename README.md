@@ -7,8 +7,8 @@ perl-labs
 
  Get [Perlbrew]
 ```shell
-sudo mkdir -p /opt/perl5
-sudo chown irocha: /opt/perl5
+sudo mkdir -p /opt/perl5 /opt/perl
+sudo chown irocha: /opt/perl5 /opt/perl
 export PERLBREW_ROOT=/opt/perl5
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      libreadline-dev libsqlite3-dev libpcap-dev \
