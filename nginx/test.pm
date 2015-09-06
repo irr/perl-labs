@@ -14,10 +14,7 @@ sub handler {
     return OK;
   }
 
-  #$r->sleep(1000, \&next);
   &next($r);
-
-  return 400;
 }
 
 sub next {
@@ -26,6 +23,16 @@ sub next {
   if ($r->has_request_body(\&post)) {
     return OK;
   }
+}
+
+sub finish {
+  my $r = shift;
+
+  $r->send_http_header("application/json");
+  $r->print($r->variable("json"));
+  $r->flush();
+
+  return OK;
 }
 
 sub post {
@@ -40,8 +47,12 @@ sub post {
   }
 
   my $json_text;
+  my $delay = 0;
 
   eval {
+    if ($params{'delay'}) {
+        $delay = 0 + $params{'delay'};
+    }
     my $redis = Redis->new();
     my $key = $r->uri;
     $redis->set('last_uri' => $key);
@@ -55,11 +66,9 @@ sub post {
   	$r->status(500);
   }
 
-  $r->send_http_header("application/json");
-  $r->print($json_text);
-  $r->flush();
+  $r->variable("json", $json_text);
 
-  return OK;
+  $r->sleep($delay, \&finish);
 }
 
 1;
