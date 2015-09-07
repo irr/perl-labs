@@ -16,12 +16,11 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      cpanminus libtext-diff-perl \
                      libtest-longstring-perl \
                      liblist-moreutils-perl \
-                     libtest-base-perl \
+                     libtest-base-perl libparams-util-perl \
                      liblwp-useragent-determined-perl \
                      build-essential eclipse git meld vim-gtk vim
 # http://www.epic-ide.org/updates/testing
 # http://download.eclipse.org/egit/updates
-# https://marketplace.eclipse.org/content/eclipse-moonrise-ui-theme
 ```
 
 ```shell
@@ -114,6 +113,7 @@ cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
+cpanm -v -n Pod::POM::Web
 cpanm -v -n Pry
 cpanm -v -n Redis
 cpanm -v -n Reply
@@ -132,7 +132,6 @@ cpanm -v -n Finance::QuoteHist
 cpanm -v -n GD::Graph
 cpanm -v -n Math::Business::SMA
 # Docs
-cpanm -v -n Pod::POM::Web
 perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
 Extras
