@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/usr/local/bin/perlbrew.sh
 
 use Redis;
 
