@@ -120,7 +120,10 @@ cpanm -v -n PAR::Packer
 cpanm -v -n Pod::POM::Web
 cpanm -v -n Pry
 cpanm -v -n Redis
+cpanm -v -n Redis::Fast
+cpanm -v -n RedisDB
 cpanm -v -n Reply
+cpanm -v -n Scalar::Util
 cpanm -v -n Task::Plack
 cpanm -v -n Test::LeakTrace
 cpanm -v -n Test::Nginx::Socket
