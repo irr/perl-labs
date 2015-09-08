@@ -113,6 +113,7 @@ cpanm -v -n JSON
 cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
 cpanm -v -n LWP::Simple
+cpanm -v -n Modern::Perl
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
 cpanm -v -n Pod::POM::Web
