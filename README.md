@@ -108,9 +108,11 @@ cpanm -v -n Geohash
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
 cpanm -v -n Hash::Ordered
+cpanm -v -n HTML::Strip
 cpanm -v -n JSON
 cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
+cpanm -v -n LWP::Simple
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
 cpanm -v -n Pod::POM::Web
