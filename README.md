@@ -45,23 +45,12 @@ sudo ln -s ~/perl/utils/srt.pl srt
 sudo ln -s ~/git/configs/torrents/wg.pl wg
 ```
 
-```shell
-perlbrew use perl-5.22.0
-cd /usr/include; h2ph -r -l . && h2ph asm/*
-```
-
  Get [Nginx]
 ```shell
 cd /opt/perl
-git clone git@github.com:irr/nginx_tcp_proxy_module.git
-cd nginx_tcp_proxy_module
-git remote add upstream https://github.com/yaoweibin/nginx_tcp_proxy_module.git
-git fetch upstream && git merge upstream/master && git push
-cd ..
-wget http://nginx.org/download/nginx-1.8.0.tar.gz
-tar xfva nginx-1.8.0.tar.gz
-cd nginx-1.8.0
-patch -p1 < /opt/perl/nginx_tcp_proxy_module/tcp-1.8.0.patch
+wget http://nginx.org/download/nginx-1.9.4.tar.gz
+tar xfva nginx-1.9.4.tar.gz
+cd nginx-1.9.4
 ./configure --with-http_perl_module \
             --with-http_ssl_module \
             --prefix=/opt/perl/nginx \
