@@ -123,19 +123,7 @@ cpanm -v -n Try::Tiny
 cpanm -v -n WWW::Mechanize
 cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
-# Finance
-cpanm -v -n Finance::Quote
-cpanm -v -n Finance::QuoteHist
-cpanm -v -n GD::Graph
-cpanm -v -n Math::Business::SMA
-# Docs
-perl -MPod::POM::Web -e "Pod::POM::Web->server"
 ```
-Extras
------------
-
-* [nginx_tcp_proxy_module]: add the feature of tcp proxy with nginx
-* [headers-more-nginx-module]: set, add, and clear arbitrary output headers
 
 Copyright and License
 -----------
@@ -155,6 +143,3 @@ limitations under the License.
 
 [Nginx]: http://wiki.nginx.org/
 [Perlbrew]: http://perlbrew.pl/
-[nginx_tcp_proxy_module]: https://github.com/irr/nginx_tcp_proxy_module
-[headers-more-nginx-module]: https://github.com/agentzh/headers-more-nginx-module
-[Software Collections]: https://www.softwarecollections.org/en/scls/rhscl/perl516/
