@@ -117,8 +117,6 @@ make -j4
 make install
 cd /usr/sbin
 sudo ln -s /opt/perl/nginx/sbin/nginx
-cd ~/gitf
-ln -s /opt/perl/nginx_tcp_proxy_module
 cd
 /opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
 curl -v http://localhost:8888/ -d "name=ivan&other=ale&value=100";echo
