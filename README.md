@@ -45,27 +45,6 @@ sudo ln -s ~/perl/utils/srt.pl srt
 sudo ln -s ~/git/configs/torrents/wg.pl wg
 ```
 
- Get [Nginx]
-```shell
-cd /opt/perl
-wget http://nginx.org/download/nginx-1.9.4.tar.gz
-tar xfva nginx-1.9.4.tar.gz
-cd nginx-1.9.4
-./configure --with-http_perl_module \
-            --with-http_ssl_module \
-            --prefix=/opt/perl/nginx \
-            --add-module=/opt/perl/nginx_tcp_proxy_module
-make -j4
-make install
-cd /usr/sbin
-sudo ln -s /opt/perl/nginx/sbin/nginx
-cd ~/gitf
-ln -s /opt/perl/nginx_tcp_proxy_module
-cd
-/opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
-curl -v http://localhost:8888/ -d "name=ivan&other=ale&value=100";echo
-```
-
 CPAN
 -----------
 
@@ -123,6 +102,26 @@ cpanm -v -n Try::Tiny
 cpanm -v -n WWW::Mechanize
 cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
+```
+
+ Get [Nginx]
+```shell
+cd /opt/perl
+wget http://nginx.org/download/nginx-1.9.4.tar.gz
+tar xfva nginx-1.9.4.tar.gz
+cd nginx-1.9.4
+./configure --with-http_perl_module \
+            --with-http_ssl_module \
+            --prefix=/opt/perl/nginx
+make -j4
+make install
+cd /usr/sbin
+sudo ln -s /opt/perl/nginx/sbin/nginx
+cd ~/gitf
+ln -s /opt/perl/nginx_tcp_proxy_module
+cd
+/opt/perl/nginx/sbin/nginx -c /home/irocha/perl/nginx/nginx-perl.conf
+curl -v http://localhost:8888/ -d "name=ivan&other=ale&value=100";echo
 ```
 
 Copyright and License
