@@ -70,6 +70,7 @@ cpanm -v -n App::FatPacker
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n Dancer2
+cpanm -v -n Dancer::Template::Mason2
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
 cpanm -v -n Geo::Hash::XS
@@ -82,6 +83,7 @@ cpanm -v -n JSON
 cpanm -v -n Log::Dispatch
 cpanm -v -n LWP::Protocol::https
 cpanm -v -n LWP::Simple
+cpanm -v -n Mason
 cpanm -v -n Modern::Perl
 cpanm -v -n Net::Server::SS::PreFork
 cpanm -v -n PAR::Packer
