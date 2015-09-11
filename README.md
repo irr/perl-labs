@@ -10,6 +10,13 @@ perl-labs
 sudo mkdir -p /opt/perl5 /opt/perl
 sudo chown irocha: /opt/perl5 /opt/perl
 export PERLBREW_ROOT=/opt/perl5
+
+sudo yum install perlbrew perl-Term-ReadLine-Gnu \
+                 perl-CPAN perl-Text-Diff perl-Test-LongString \
+                 perl-List-MoreUtils perl-Test-Base \
+                 perl-IO-Socket-SSL perl-Time-HiRes
+sudo yum groupinstall "Development Tools"
+
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      libreadline-dev libsqlite3-dev libpcap-dev \
                      libmysqlclient-dev libgd-dev libexpat1-dev \
@@ -36,6 +43,9 @@ perlbrew install perl-5.22.0 -Dusethreads \
 perlbrew install-cpanm or cpan -i App::cpanminus
 perlbrew switch perl-5.22.0 and perlbrew switch-off
 perlbrew use perl-5.22.0 and exit or perlbrew off
+
+perlbrew use perl-5.22.0
+cd /usr/include; h2ph -r -l . && h2ph asm/*
 ```
 
 ```shell
