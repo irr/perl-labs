@@ -80,7 +80,7 @@ cpanm -v -n App::FatPacker
 cpanm -v -n Crypt::CBC
 cpanm -v -n Crypt::Rijndael
 cpanm -v -n Dancer2
-cpanm -v -n Dancer::Template::Mason2
+cpanm -v -n Dancer2::Template::Mason2
 cpanm -v -n DBD::Cassandra
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
