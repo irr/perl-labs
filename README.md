@@ -24,6 +24,7 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      libtest-longstring-perl \
                      liblist-moreutils-perl \
                      libtest-base-perl libparams-util-perl \
+                     geoip-bin geoip-database libgeoip-dev \
                      liblwp-useragent-determined-perl \
                      build-essential eclipse git meld vim-gtk vim
 # http://www.epic-ide.org/updates/testing
