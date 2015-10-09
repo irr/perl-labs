@@ -121,9 +121,9 @@ cpanm -v -n YAML::Tiny
  Get [Nginx]
 ```shell
 cd /opt/perl
-wget http://nginx.org/download/nginx-1.9.4.tar.gz
-tar xfva nginx-1.9.4.tar.gz
-cd nginx-1.9.4
+wget http://nginx.org/download/nginx-1.9.5.tar.gz
+tar xfva nginx-1.9.5.tar.gz
+cd nginx-1.9.5
 ./configure --with-http_perl_module \
             --with-http_ssl_module \
             --prefix=/opt/perl/nginx
