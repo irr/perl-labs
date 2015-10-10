@@ -127,6 +127,8 @@ tar xfva nginx-1.9.5.tar.gz
 cd nginx-1.9.5
 ./configure --with-http_perl_module \
             --with-http_ssl_module \
+            --with-stream \
+            --with-stream_ssl_module \
             --prefix=/opt/perl/nginx
 make -j4
 make install
