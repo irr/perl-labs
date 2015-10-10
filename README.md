@@ -14,7 +14,8 @@ export PERLBREW_ROOT=/opt/perl5
 sudo yum install perlbrew perl-Term-ReadLine-Gnu \
                  perl-CPAN perl-Text-Diff perl-Test-LongString \
                  perl-List-MoreUtils perl-Test-Base \
-                 perl-IO-Socket-SSL perl-Time-HiRes
+                 perl-IO-Socket-SSL perl-Time-HiRes \
+                 perl-ExtUtils-Embed
 sudo yum groupinstall "Development Tools"
 
 sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
