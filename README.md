@@ -119,6 +119,12 @@ cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
 ```
 
+```
+export JAVA_HOME=/usr/lib/jvm/java-openjdk
+cpanm -v -n Inline::Java
+cpanm -v -n Lingua::StanfordCoreNLP 
+```
+
  Get [Nginx]
 ```shell
 cd /opt/perl
