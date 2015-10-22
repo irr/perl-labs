@@ -116,6 +116,7 @@ cpanm -v -n Text::CSV_XS
 cpanm -v -n Tie::File
 cpanm -v -n Try::Tiny
 cpanm -v -n WWW::Mechanize
+cpanm -v -n XML::Simple
 cpanm -v -n YAML
 cpanm -v -n YAML::Tiny
 ```
