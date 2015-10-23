@@ -87,6 +87,7 @@ cpanm -v -n DateTime
 cpanm -v -n DBD::Cassandra
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
+cpanm -v -n ExtUtils::MakeMaker
 cpanm -v -n Geo::Hash::XS
 cpanm -v -n Geohash
 cpanm -v -n IO::Socket::SSL
