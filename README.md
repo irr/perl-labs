@@ -131,12 +131,12 @@ cpanm -v -n Lingua::StanfordCoreNLP
  Get [Nginx]
 ```shell
 cd /opt/perl
-wget http://nginx.org/download/nginx-1.9.5.tar.gz
+wget http://nginx.org/download/nginx-1.9.6.tar.gz
 wget https://github.com/openresty/headers-more-nginx-module/archive/v0.261.tar.gz \
      -O headers-more-nginx-module-0.261.tar.gz
 tar xfva headers-more-nginx-module-0.261.tar.gz
-tar xfva nginx-1.9.5.tar.gz
-cd nginx-1.9.5
+tar xfva nginx-1.9.6.tar.gz
+cd nginx-1.9.6
 ./configure --with-http_perl_module \
             --with-http_ssl_module \
             --with-stream \
