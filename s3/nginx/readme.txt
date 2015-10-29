@@ -15,6 +15,9 @@ curl -v http://localhost:8888/s3.jpg -o s3.jpg
 curl -v -X PUT --data "@s3.txt" http://localhost:8888/s3.txt
 curl -v -X PUT --data-binary "@s3.jpg" -H "Content-Type: image/jpeg" http://localhost:8888/s3.jpg
 
+curl -v -X PUT -T "s3.jpg" -H "Content-Type: image/jpeg" http://localhost:8888/s3.jpg
+curl -v -X PUT -T "s3.txt" http://localhost:8888/s3.txt
+
 curl -v X DELETE http://localhost:8888/s3.txt
 curl -v X DELETE http://localhost:8888/s3.jpg
 
