@@ -132,16 +132,16 @@ cpanm -v -n Lingua::StanfordCoreNLP
 ```shell
 cd /opt/perl
 wget http://nginx.org/download/nginx-1.9.6.tar.gz
-wget https://github.com/openresty/headers-more-nginx-module/archive/v0.261.tar.gz \
-     -O headers-more-nginx-module-0.261.tar.gz
-tar xfva headers-more-nginx-module-0.261.tar.gz
+wget https://github.com/openresty/headers-more-nginx-module/archive/v0.27.tar.gz \
+     -O headers-more-nginx-module-0.27.tar.gz
+tar xfva headers-more-nginx-module-0.27.tar.gz
 tar xfva nginx-1.9.6.tar.gz
 cd nginx-1.9.6
 ./configure --with-http_perl_module \
             --with-http_ssl_module \
             --with-stream \
             --with-stream_ssl_module \
-            --add-module=/opt/perl/headers-more-nginx-module-0.261 \
+            --add-module=/opt/perl/headers-more-nginx-module-0.27 \
             --prefix=/opt/perl/nginx
 make -j4
 make install
