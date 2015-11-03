@@ -36,17 +36,17 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.22.0 -Dusethreads \
+perlbrew install perl-5.14.4 -Dusethreads \
                              -Dcccdlflags=-fPIC \
                              -Duseshrplib \
                              -Duselargefiles \
                              -Dusemymalloc=no \
                              -Duse64bitall
 perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.22.0 and perlbrew switch-off
-perlbrew use perl-5.22.0 and exit or perlbrew off
+perlbrew switch perl-5.14.4 and perlbrew switch-off
+perlbrew use perl-5.14.4 and exit or perlbrew off
 
-perlbrew use perl-5.22.0
+perlbrew use perl-5.14.4
 cd /usr/include; h2ph -r -l . && h2ph asm/*
 ```
 
