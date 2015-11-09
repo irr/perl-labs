@@ -90,6 +90,7 @@ cpanm -v -n DBD::SQLite
 cpanm -v -n ExtUtils::MakeMaker
 cpanm -v -n Geo::Hash::XS
 cpanm -v -n Geohash
+cpanm -v -n Inline::C
 cpanm -v -n IO::Socket::SSL
 cpanm -v -n IPC::System::Simple
 cpanm -v -n Hash::Ordered
