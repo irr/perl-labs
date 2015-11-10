@@ -12,7 +12,7 @@ foreach my $i (0..9) {
              undef, "irr-id", $i);
 }
  
-my $rows = $dbh->selectall_arrayref("SELECT id, unixTimestampOf(ts) as ts, val FROM series LIMIT 10;");
+my $rows = $dbh->selectall_arrayref("SELECT id, toUnixTimestamp(ts) as ts, val FROM series LIMIT 10;");
  
 for my $row (@$rows) {
     say("retrieving timestamp ${$row}[1] = ${$row}[2]...");
