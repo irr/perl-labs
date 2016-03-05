@@ -131,18 +131,36 @@ cpanm -v -n Lingua::StanfordCoreNLP
 
  Get [Nginx]
 ```shell
+sudo apt-get install libreadline6-dev libpcre3-dev libssl-dev \
+                     libsqlite3-dev libmysqlclient-dev libzmq3-dev libboost-all-dev \
+                     geoip-bin geoip-database libgeoip-dev \
+                     libapr1 libaprutil1 libaprutil1-dev libaprutil1-dbd-sqlite3 \
+                     libapreq2-3 libapr1-dev libapreq2-dev libperl-dev
 cd /opt/perl
-wget http://nginx.org/download/nginx-1.9.6.tar.gz
-wget https://github.com/openresty/headers-more-nginx-module/archive/v0.28.tar.gz \
-     -O headers-more-nginx-module-0.28.tar.gz
-tar xfva headers-more-nginx-module-0.28.tar.gz
-tar xfva nginx-1.9.6.tar.gz
-cd nginx-1.9.6
+wget http://nginx.org/download/nginx-1.9.12.tar.gz
+wget https://github.com/openresty/headers-more-nginx-module/archive/v0.29.tar.gz \
+     -O headers-more-nginx-module-0.29.tar.gz
+tar xfva headers-more-nginx-module-0.29.tar.gz
+tar xfva nginx-1.9.12.tar.gz
+cd nginx-1.9.12
 ./configure --with-http_perl_module \
+            --with-http_gunzip_module \
+            --with-http_geoip_module \
+            --with-http_realip_module \
+            --with-http_stub_status_module \
             --with-http_ssl_module \
+            --with-http_realip_module \
+            --with-http_v2_module \
+            --with-md5-asm \
+            --with-sha1-asm \
+            --with-file-aio \
             --with-stream \
             --with-stream_ssl_module \
-            --add-module=/opt/perl/headers-more-nginx-module-0.28 \
+            --without-http_fastcgi_module \
+            --without-http_uwsgi_module \
+            --without-http_scgi_module \
+            --with-debug \
+            --add-module=/opt/perl/headers-more-nginx-module-0.29 \
             --prefix=/opt/perl/nginx
 make -j4
 make install
