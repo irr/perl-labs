@@ -27,7 +27,9 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
                      libtest-base-perl libparams-util-perl \
                      geoip-bin geoip-database libgeoip-dev \
                      liblwp-useragent-determined-perl \
-                     build-essential eclipse git meld vim-gtk vim
+                     build-essential
+
+sudo apt-get install eclipse
 # http://www.epic-ide.org/updates/testing
 # http://download.eclipse.org/egit/updates
 ```
@@ -36,18 +38,17 @@ sudo apt-get install libpcre3-dev zlib1g-dev libssl-dev \
 perlbrew init
 perlbrew mirror
 perlbrew available
-perlbrew install perl-5.14.4 -Dusethreads \
+perlbrew install perl-5.24.0 -Dusethreads \
                              -Dcccdlflags=-fPIC \
                              -Duseshrplib \
                              -Duselargefiles \
                              -Dusemymalloc=no \
                              -Duse64bitall
 perlbrew install-cpanm or cpan -i App::cpanminus
-perlbrew switch perl-5.14.4 and perlbrew switch-off
-perlbrew use perl-5.14.4 and exit or perlbrew off
+perlbrew switch perl-5.24.0 and perlbrew switch-off
+perlbrew use perl-5.24.0 and exit or perlbrew off
 
-perlbrew use perl-5.14.4
-cd /usr/include; h2ph -r -l . && h2ph asm/*
+perlbrew use perl-5.24.0
 ```
 
 ```shell
@@ -88,6 +89,7 @@ cpanm -v -n DBD::Cassandra
 cpanm -v -n DBD::mysql
 cpanm -v -n DBD::SQLite
 cpanm -v -n ExtUtils::MakeMaker
+cpanm -v -n File::Slurper
 cpanm -v -n Geo::Hash::XS
 cpanm -v -n Geohash
 cpanm -v -n Inline::C
@@ -126,7 +128,7 @@ cpanm -v -n YAML::Tiny
 ```
 export JAVA_HOME=/usr/lib/jvm/java-openjdk
 cpanm -v -n Inline::Java
-cpanm -v -n Lingua::StanfordCoreNLP 
+cpanm -v -n Lingua::StanfordCoreNLP
 ```
 
  Get [Nginx]
