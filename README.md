@@ -153,8 +153,6 @@ cd nginx-1.11.4
             --with-http_ssl_module \
             --with-http_realip_module \
             --with-http_v2_module \
-            --with-md5-asm \
-            --with-sha1-asm \
             --with-file-aio \
             --with-stream \
             --with-stream_ssl_module \
