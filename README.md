@@ -139,12 +139,12 @@ sudo apt-get install libreadline6-dev libpcre3-dev libssl-dev \
                      libapr1 libaprutil1 libaprutil1-dev libaprutil1-dbd-sqlite3 \
                      libapreq2-3 libapr1-dev libapreq2-dev libperl-dev
 cd /opt/perl
-wget http://nginx.org/download/nginx-1.9.12.tar.gz
+wget http://nginx.org/download/nginx-1.11.4.tar.gz
 wget https://github.com/openresty/headers-more-nginx-module/archive/v0.29.tar.gz \
      -O headers-more-nginx-module-0.29.tar.gz
 tar xfva headers-more-nginx-module-0.29.tar.gz
-tar xfva nginx-1.9.12.tar.gz
-cd nginx-1.9.12
+tar xfva nginx-1.11.4.tar.gz
+cd nginx-1.11.4
 ./configure --with-http_perl_module \
             --with-http_gunzip_module \
             --with-http_geoip_module \
